@@ -29,7 +29,7 @@ const Navbar = () => {
           </div>
 
           <Link to="/" className="nav-logo" data-cursor="link">
-            <img src="/logo_0_0.jpeg" alt="ZaQueen" className="nav-logo-img" />
+            <img src="/logo.svg" alt="ZaQueen" className="nav-logo-img" />
           </Link>
 
           <div className="nav-links">
@@ -67,7 +67,7 @@ const Navbar = () => {
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
           <Link to="/" className="mobile-logo" onClick={() => setMobileOpen(false)}>
-            <img src="/logo_0_0.jpeg" alt="ZaQueen" className="mobile-logo-img" />
+            <img src="/logo.svg" alt="ZaQueen" className="mobile-logo-img" />
           </Link>
           <div className="mobile-divider" />
           <Link to="/shop" className="mobile-link">Shop RTW</Link>

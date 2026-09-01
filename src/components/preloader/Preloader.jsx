@@ -18,7 +18,7 @@ const Preloader = ({ onComplete }) => {
   return (
     <div className={`preloader ${phase === 'reveal' ? 'preloader-exit' : ''}`}>
       <div className="preloader-content">
-        <img src="/logo_0_0.jpeg" alt="ZaQueen" className="preloader-logo" />
+        <img src="/logo.svg" alt="ZaQueen" className="preloader-logo" />
         <div className="preloader-tagline">
           <span className="preloader-word" style={{ animationDelay: '0.5s' }}>Your</span>
           <span className="preloader-word" style={{ animationDelay: '0.7s' }}>design,</span>

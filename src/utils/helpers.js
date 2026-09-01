@@ -59,6 +59,6 @@ export const productSchema = (product) => generateStructuredData('Product', {
 export const organizationSchema = () => generateStructuredData('Organization', {
   name: 'ZaQueen',
   url: 'https://zaqueen.com',
-  logo: 'https://zaqueen.com/logo_0_0.jpeg',
+  logo: 'https://zaqueen.com/logo.svg',
   sameAs: ['https://instagram.com/zaqueen', 'https://facebook.com/zaqueen'],
 });

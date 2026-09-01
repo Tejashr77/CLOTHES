@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B8943E"/>
+      <stop offset="30%" stop-color="#C9A84C"/>
+      <stop offset="60%" stop-color="#D4B96A"/>
+      <stop offset="100%" stop-color="#A88B3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Z letter -->
+  <path d="M45 48 L95 48 L45 110 L100 110" stroke="url(#gold)" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+
+  <!-- Q circle -->
+  <circle cx="130" cy="79" r="38" stroke="url(#gold)" stroke-width="7" fill="none"/>
+
+  <!-- Q tail with crown -->
+  <path d="M155 105 L185 140" stroke="url(#gold)" stroke-width="7" stroke-linecap="square"/>
+
+  <!-- Crown -->
+  <path d="M168 118 L175 108 L182 118 L189 108 L196 118" stroke="url(#gold)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- ZAQUEEN text -->
+  <text x="200" y="155" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="400" letter-spacing="8" fill="url(#gold)">ZAQUEEN</text>
+
+  <!-- Tagline -->
+  <text x="200" y="180" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="2" fill="#8B7355" opacity="0.8">your design, our couture, designed to reign</text>
+</svg>
