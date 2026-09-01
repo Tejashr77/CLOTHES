@@ -10,10 +10,12 @@
     "preview": "vite preview",
     "server": "node server/index.js",
     "seed": "node server/seed.js",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "dev:all": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "concurrently": "^10.0.5",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
