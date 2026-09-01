@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, User, Search, Menu, X, LogOut } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -9,66 +9,85 @@ const Navbar = () => {
   const { cartCount } = useCart();
   const { isAuthenticated, user, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => { setMobileOpen(false); }, [location]);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container container flex justify-between items-center">
-        <div className="navbar-mobile-menu" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </div>
+    <>
+      <nav className={`zq-nav ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
+        <div className="zq-nav-inner container">
+          <div className="nav-mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} data-cursor="link">
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </div>
 
-        <div className="navbar-logo">
-          <Link to="/" className="logo-link">
-            <img src="/logo_0_0.jpeg" alt="ZaQueen Logo" className="logo-image" />
+          <Link to="/" className="nav-logo">
+            <span className="logo-z">Z</span>
+            <span className="logo-q">Q</span>
           </Link>
-        </div>
 
-        <div className="navbar-links flex items-center gap-md">
-          <Link to="/shop" className="nav-link">Shop RTW</Link>
-          <Link to="/bespoke" className="nav-link">Bespoke Couture</Link>
-          <Link to="/about" className="nav-link">Our Story</Link>
-        </div>
+          <div className="nav-links">
+            <Link to="/shop" className={`nav-link ${location.pathname === '/shop' ? 'active' : ''}`}>Shop</Link>
+            <Link to="/bespoke" className={`nav-link ${location.pathname === '/bespoke' ? 'active' : ''}`}>Bespoke</Link>
+            <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>Story</Link>
+            <Link to="/journal" className={`nav-link ${location.pathname === '/journal' ? 'active' : ''}`}>Journal</Link>
+          </div>
 
-        <div className="navbar-icons flex items-center gap-sm">
-          <button className="icon-btn"><Search size={20} /></button>
+          <div className="nav-actions">
+            <button className="nav-icon-btn" aria-label="Search" data-cursor="link"><Search size={20} /></button>
+            {isAuthenticated ? (
+              <div className="nav-user-menu">
+                <Link to="/account" className="nav-icon-btn" data-cursor="link"><User size={20} /></Link>
+                <div className="user-dropdown glass">
+                  <p className="user-name">{user?.name}</p>
+                  <Link to="/account">My Account</Link>
+                  <Link to="/orders">My Orders</Link>
+                  <Link to="/wishlist">Wishlist</Link>
+                  {user?.role === 'admin' && <Link to="/admin">Admin Dashboard</Link>}
+                  <button onClick={logout}><LogOut size={14} /> Sign Out</button>
+                </div>
+              </div>
+            ) : (
+              <Link to="/account" className="nav-icon-btn" data-cursor="link"><User size={20} /></Link>
+            )}
+            <Link to="/cart" className="nav-icon-btn cart-icon" data-cursor="link">
+              <ShoppingBag size={20} />
+              {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-content">
+          <Link to="/shop" className="mobile-link">Shop RTW</Link>
+          <Link to="/bespoke" className="mobile-link">Bespoke Couture</Link>
+          <Link to="/about" className="mobile-link">Our Story</Link>
+          <Link to="/journal" className="mobile-link">Journal</Link>
+          <div className="mobile-divider" />
           {isAuthenticated ? (
             <>
-              <Link to="/account" className="icon-btn" title={user?.name}>
-                <User size={20} />
-              </Link>
-              <button className="icon-btn" onClick={logout} title="Sign Out">
-                <LogOut size={20} />
-              </button>
+              <Link to="/account" className="mobile-link">My Account</Link>
+              <Link to="/orders" className="mobile-link">My Orders</Link>
+              <Link to="/wishlist" className="mobile-link">Wishlist</Link>
+              {user?.role === 'admin' && <Link to="/admin" className="mobile-link">Admin</Link>}
+              <button className="mobile-link" onClick={logout}>Sign Out</button>
             </>
           ) : (
-            <Link to="/account" className="icon-btn"><User size={20} /></Link>
+            <Link to="/account" className="mobile-link">Sign In</Link>
           )}
-          <Link to="/cart" className="icon-btn relative">
-            <ShoppingBag size={20} />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </Link>
+          <Link to="/cart" className="mobile-link">Cart ({cartCount})</Link>
         </div>
       </div>
-
-      {mobileOpen && (
-        <div className="mobile-menu">
-          <Link to="/shop" className="mobile-link" onClick={() => setMobileOpen(false)}>Shop RTW</Link>
-          <Link to="/bespoke" className="mobile-link" onClick={() => setMobileOpen(false)}>Bespoke Couture</Link>
-          <Link to="/about" className="mobile-link" onClick={() => setMobileOpen(false)}>Our Story</Link>
-          {isAuthenticated ? (
-            <>
-              <Link to="/account" className="mobile-link" onClick={() => setMobileOpen(false)}>My Account</Link>
-              <Link to="/orders" className="mobile-link" onClick={() => setMobileOpen(false)}>My Orders</Link>
-              {user?.role === 'admin' && <Link to="/admin" className="mobile-link" onClick={() => setMobileOpen(false)}>Admin</Link>}
-              <button className="mobile-link" onClick={() => { logout(); setMobileOpen(false); }}>Sign Out</button>
-            </>
-          ) : (
-            <Link to="/account" className="mobile-link" onClick={() => setMobileOpen(false)}>Sign In</Link>
-          )}
-          <Link to="/cart" className="mobile-link" onClick={() => setMobileOpen(false)}>Cart ({cartCount})</Link>
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 

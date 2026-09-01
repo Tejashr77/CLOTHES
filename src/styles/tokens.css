@@ -1,0 +1,173 @@
+/* ═══════════════════════════════════════════════════════
+   ZaQueen Design Token System
+   Brand: Playfair Display (serif display) + Inter (grotesk UI)
+   Palette: Gold #C9A84C · Black #1A1A1A · Ivory #FAF8F5
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Brand Colors ─── */
+  --zq-gold: #C9A84C;
+  --zq-gold-light: #D4B96A;
+  --zq-gold-dark: #A88B3A;
+  --zq-black: #1A1A1A;
+  --zq-black-deep: #0D0D0D;
+  --zq-ivory: #FAF8F5;
+  --zq-ivory-warm: #F5F0E8;
+  --zq-white: #FFFFFF;
+
+  /* ─── Neutral Palette ─── */
+  --zq-gray-50: #F9F9F9;
+  --zq-gray-100: #F0EFED;
+  --zq-gray-200: #E0DEDA;
+  --zq-gray-300: #C8C5BF;
+  --zq-gray-400: #A8A49E;
+  --zq-gray-500: #7A7672;
+  --zq-gray-600: #5A5754;
+  --zq-gray-700: #3D3B38;
+  --zq-gray-800: #2A2826;
+  --zq-gray-900: #1A1A1A;
+
+  /* ─── Semantic Colors ─── */
+  --zq-success: #2D8B4E;
+  --zq-error: #C43E3E;
+  --zq-warning: #D4A843;
+  --zq-info: #4A7FC4;
+
+  /* ─── Typography ─── */
+  --zq-font-display: 'Playfair Display', 'Georgia', serif;
+  --zq-font-body: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  --zq-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ─── Type Scale (modular, ratio 1.25) ─── */
+  --zq-text-xs: 0.694rem;
+  --zq-text-sm: 0.833rem;
+  --zq-text-base: 1rem;
+  --zq-text-md: 1.125rem;
+  --zq-text-lg: 1.25rem;
+  --zq-text-xl: 1.563rem;
+  --zq-text-2xl: 1.953rem;
+  --zq-text-3xl: 2.441rem;
+  --zq-text-4xl: 3.052rem;
+  --zq-text-5xl: 3.815rem;
+  --zq-text-hero: clamp(3rem, 8vw, 7rem);
+
+  /* ─── Font Weights ─── */
+  --zq-weight-light: 300;
+  --zq-weight-regular: 400;
+  --zq-weight-medium: 500;
+  --zq-weight-semibold: 600;
+  --zq-weight-bold: 700;
+
+  /* ─── Line Heights ─── */
+  --zq-leading-none: 1;
+  --zq-leading-tight: 1.15;
+  --zq-leading-snug: 1.3;
+  --zq-leading-normal: 1.5;
+  --zq-leading-relaxed: 1.65;
+  --zq-leading-loose: 1.8;
+
+  /* ─── Letter Spacing ─── */
+  --zq-tracking-tight: -0.02em;
+  --zq-tracking-normal: 0;
+  --zq-tracking-wide: 0.05em;
+  --zq-tracking-wider: 0.1em;
+  --zq-tracking-widest: 0.2em;
+
+  /* ─── Spacing Scale (8px base) ─── */
+  --zq-space-0: 0;
+  --zq-space-1: 0.25rem;
+  --zq-space-2: 0.5rem;
+  --zq-space-3: 0.75rem;
+  --zq-space-4: 1rem;
+  --zq-space-5: 1.25rem;
+  --zq-space-6: 1.5rem;
+  --zq-space-8: 2rem;
+  --zq-space-10: 2.5rem;
+  --zq-space-12: 3rem;
+  --zq-space-16: 4rem;
+  --zq-space-20: 5rem;
+  --zq-space-24: 6rem;
+  --zq-space-32: 8rem;
+  --zq-space-40: 10rem;
+  --zq-space-section: clamp(4rem, 10vw, 8rem);
+
+  /* ─── Border Radius ─── */
+  --zq-radius-none: 0;
+  --zq-radius-xs: 4px;
+  --zq-radius-sm: 6px;
+  --zq-radius-md: 10px;
+  --zq-radius-lg: 16px;
+  --zq-radius-xl: 24px;
+  --zq-radius-2xl: 32px;
+  --zq-radius-full: 9999px;
+
+  /* ─── Glassmorphism Tokens ─── */
+  --zq-glass-blur: 20px;
+  --zq-glass-blur-heavy: 40px;
+  --zq-glass-blur-light: 12px;
+  --zq-glass-bg: rgba(250, 248, 245, 0.72);
+  --zq-glass-bg-dark: rgba(26, 26, 26, 0.78);
+  --zq-glass-bg-gold: rgba(201, 168, 76, 0.12);
+  --zq-glass-border: rgba(255, 255, 255, 0.18);
+  --zq-glass-border-dark: rgba(255, 255, 255, 0.08);
+  --zq-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --zq-glass-shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.1);
+  --zq-glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  /* ─── Shadows ─── */
+  --zq-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --zq-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --zq-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --zq-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --zq-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --zq-shadow-gold: 0 4px 24px rgba(201, 168, 76, 0.25);
+  --zq-shadow-float: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  /* ─── Transitions ─── */
+  --zq-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --zq-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --zq-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --zq-duration-fast: 150ms;
+  --zq-duration-normal: 300ms;
+  --zq-duration-slow: 500ms;
+  --zq-duration-slower: 800ms;
+  --zq-duration-page: 600ms;
+
+  /* ─── Z-Index Scale ─── */
+  --zq-z-base: 0;
+  --zq-z-raised: 10;
+  --zq-z-dropdown: 100;
+  --zq-z-sticky: 200;
+  --zq-z-overlay: 300;
+  --zq-z-modal: 400;
+  --zq-z-toast: 500;
+  --zq-z-cursor: 9999;
+
+  /* ─── Container Widths ─── */
+  --zq-container-sm: 640px;
+  --zq-container-md: 768px;
+  --zq-container-lg: 1024px;
+  --zq-container-xl: 1280px;
+  --zq-container-2xl: 1440px;
+
+  /* ─── Breakpoints (for reference, use in media queries) ─── */
+  /* sm: 640px · md: 768px · lg: 1024px · xl: 1280px · 2xl: 1536px */
+}
+
+/* ─── Dark mode override ─── */
+[data-theme="dark"] {
+  --zq-glass-bg: rgba(26, 26, 26, 0.72);
+  --zq-glass-border: rgba(255, 255, 255, 0.08);
+  --zq-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --zq-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --zq-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --zq-duration-fast: 0ms;
+    --zq-duration-normal: 0ms;
+    --zq-duration-slow: 0ms;
+  }
+}

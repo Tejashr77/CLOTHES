@@ -1,7 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CustomCursor from './components/cursor/CustomCursor';
+import Preloader from './components/preloader/Preloader';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import BespokeCouture from './pages/BespokeCouture';
@@ -9,6 +11,7 @@ import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Account from './pages/Account';
+import MyOrders from './pages/MyOrders';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import FindUs from './pages/FindUs';
@@ -16,16 +19,28 @@ import FAQs from './pages/FAQs';
 import Policies from './pages/Policies';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
-import MyOrders from './pages/MyOrders';
+import Wishlist from './pages/Wishlist';
+import Journal from './pages/Journal';
 import AdminDashboard from './pages/AdminDashboard';
-import './App.css';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
+  const handlePreloaderDone = useCallback(() => setLoaded(true), []);
+
   return (
     <Router>
-      <div className="app-wrapper flex flex-col" style={{ minHeight: '100vh' }}>
+      <CustomCursor />
+      {!loaded && <Preloader onComplete={handlePreloaderDone} />}
+      <div className="app-wrapper" style={{ minHeight: '100vh' }}>
+        <ScrollToTop />
         <Navbar />
-        <main style={{ flex: 1 }}>
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
@@ -42,6 +57,8 @@ function App() {
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/find-us" element={<FindUs />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/journal" element={<Journal />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
