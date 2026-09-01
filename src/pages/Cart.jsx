@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import './Cart.css';
 
 const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart, cartTotal, clearCart } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   if (cartItems.length === 0) {
     return (
@@ -31,7 +34,7 @@ const Cart = () => {
         <div className="cart-items">
           {cartItems.map(item => (
             <div key={`${item.id}-${item.selectedSize}`} className="cart-item">
-              <Link to={`/product/${item.id}`} className="cart-item-image-wrapper">
+              <Link to={`/product/${item._id || item.id}`} className="cart-item-image-wrapper">
                 <img src={item.image} alt={item.name} className="cart-item-image" />
               </Link>
               <div className="cart-item-details">
@@ -39,14 +42,14 @@ const Cart = () => {
                 {item.selectedSize && <p className="cart-item-size">Size: {item.selectedSize}</p>}
                 <p className="cart-item-price">₹{item.price.toLocaleString()}</p>
                 <div className="cart-item-quantity">
-                  <button onClick={() => updateQuantity(item.id, item.selectedSize, item.quantity - 1)}>-</button>
+                  <button onClick={() => updateQuantity(item.id || item._id, item.selectedSize, item.quantity - 1)}>-</button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => updateQuantity(item.id, item.selectedSize, item.quantity + 1)}>+</button>
+                  <button onClick={() => updateQuantity(item.id || item._id, item.selectedSize, item.quantity + 1)}>+</button>
                 </div>
               </div>
               <div className="cart-item-subtotal">
                 <p>₹{(item.price * item.quantity).toLocaleString()}</p>
-                <button className="remove-btn" onClick={() => removeFromCart(item.id, item.selectedSize)}>Remove</button>
+                <button className="remove-btn" onClick={() => removeFromCart(item.id || item._id, item.selectedSize)}>Remove</button>
               </div>
             </div>
           ))}
@@ -66,7 +69,9 @@ const Cart = () => {
             <span>Total</span>
             <span>₹{(cartTotal + (cartTotal >= 50000 ? 0 : 1500)).toLocaleString()}</span>
           </div>
-          <Button variant="primary" className="checkout-btn">Proceed to Checkout</Button>
+          <Button variant="primary" className="checkout-btn" onClick={() => navigate(isAuthenticated ? '/checkout' : '/account')}>
+            Proceed to Checkout
+          </Button>
           <button className="clear-cart-btn" onClick={clearCart}>Clear Cart</button>
           <Link to="/shop" className="continue-shopping">Continue Shopping</Link>
         </div>

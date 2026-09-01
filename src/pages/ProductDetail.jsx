@@ -8,12 +8,14 @@ import './ProductDetail.css';
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { getProductById } = useProducts();
+  const { getProductById, loading } = useProducts();
   const { addToCart } = useCart();
   const product = getProductById(id);
   const [selectedSize, setSelectedSize] = React.useState(null);
   const [quantity, setQuantity] = React.useState(1);
   const [added, setAdded] = React.useState(false);
+
+  if (loading) return <div className="page-container container text-center"><p style={{ marginTop: '4rem' }}>Loading...</p></div>;
 
   if (!product) {
     return (

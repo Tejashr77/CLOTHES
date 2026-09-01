@@ -66,7 +66,7 @@ const Shop = () => {
 
             <div className="grid shop-grid gap-md">
               {filteredProducts.map(product => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product._id || product.id} product={product} />
               ))}
             </div>
           </main>

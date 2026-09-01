@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+import api from '../api/client';
 import Button from '../components/Button';
 import './Contact.css';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError('');
+    setLoading(true);
+    try {
+      await api.submitContact(form);
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -50,6 +62,7 @@ const Contact = () => {
             </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit}>
+              {error && <p style={{ color: 'var(--color-accent)', marginBottom: '1rem' }}>{error}</p>}
               <div className="form-group">
                 <label>Your Name</label>
                 <input type="text" placeholder="Full name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required />
@@ -73,7 +86,7 @@ const Contact = () => {
                 <label>Message</label>
                 <textarea placeholder="Tell us how we can help..." rows="5" value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} required></textarea>
               </div>
-              <Button variant="primary" className="contact-submit">Send Message</Button>
+              <Button variant="primary" className="contact-submit" disabled={loading}>{loading ? 'Sending...' : 'Send Message'}</Button>
             </form>
           )}
         </div>

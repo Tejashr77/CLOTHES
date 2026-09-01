@@ -5,7 +5,7 @@ import './ProductCard.css';
 const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
-      <Link to={`/product/${product.id}`} className="product-card-image-link">
+      <Link to={`/product/${product._id || product.id}`} className="product-card-image-link">
         <div className="product-card-image-wrapper">
           <img src={product.image} alt={product.name} className="product-card-image" />
           {product.scarcity && (
@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
       
       <div className="product-card-details">
         <h3 className="product-card-title">
-          <Link to={`/product/${product.id}`}>{product.name}</Link>
+          <Link to={`/product/${product._id || product.id}`}>{product.name}</Link>
         </h3>
         <p className="product-card-price">₹{product.price.toLocaleString()}</p>
         <p className="product-card-category">{product.category}</p>
