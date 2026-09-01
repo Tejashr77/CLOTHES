@@ -8,10 +8,9 @@ const Footer = () => (
       <div className="footer-grid">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <span className="footer-logo-z">Z</span>
-            <span className="footer-logo-q">Q</span>
+            <img src="/logo_0_0.jpeg" alt="ZaQueen" className="footer-logo-img" />
           </Link>
-          <p className="footer-tagline">Your vision. Our couture. Designed to reign.</p>
+          <p className="footer-tagline">Your design, our couture, designed to reign.</p>
           <div className="footer-socials">
             <a href="https://instagram.com/zaqueen" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
             <a href="https://facebook.com/zaqueen" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
@@ -32,12 +31,12 @@ const Footer = () => (
           <Link to="/journal">Journal</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/find-us">Store Locator</Link>
-          <Link to="/careers">Careers</Link>
         </div>
         <div className="footer-col">
           <h4>Support</h4>
           <Link to="/faqs">FAQs</Link>
-          <Link to="/policies">Shipping & Returns</Link>
+          <Link to="/returns">Returns & Exchanges</Link>
+          <Link to="/policies">Shipping Policy</Link>
           <Link to="/terms">Terms of Service</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/account">My Account</Link>

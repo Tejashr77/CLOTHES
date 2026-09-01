@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   z-index: var(--zq-z-sticky);
-  padding: var(--zq-space-4) 0;
+  padding: var(--zq-space-3) 0;
   transition: all var(--zq-duration-normal) var(--zq-ease-out);
 }
 
@@ -18,7 +18,7 @@
   -webkit-backdrop-filter: blur(var(--zq-glass-blur-heavy));
   border-bottom: 1px solid var(--zq-glass-border);
   box-shadow: var(--zq-shadow-sm);
-  padding: var(--zq-space-3) 0;
+  padding: var(--zq-space-2) 0;
 }
 
 .zq-nav-inner {
@@ -32,26 +32,20 @@
 /* Logo */
 .nav-logo {
   display: flex;
-  align-items: baseline;
-  gap: 2px;
+  align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
-.logo-z {
-  font-family: var(--zq-font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--zq-gold);
-  line-height: 1;
+.nav-logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: height var(--zq-duration-normal) var(--zq-ease-out);
 }
 
-.logo-q {
-  font-family: var(--zq-font-display);
-  font-size: 2.4rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--zq-gold);
-  line-height: 1;
+.zq-nav.scrolled .nav-logo-img {
+  height: 40px;
 }
 
 /* Nav Links */
@@ -164,18 +158,16 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: var(--zq-glass-bg);
-  backdrop-filter: blur(var(--zq-glass-blur-heavy));
-  -webkit-backdrop-filter: blur(var(--zq-glass-blur-heavy));
+  background: var(--zq-black);
   z-index: var(--zq-z-overlay);
-  transform: translateY(-100%);
+  transform: translateX(-100%);
   transition: transform var(--zq-duration-slow) var(--zq-ease-out);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.mobile-menu.open { transform: translateY(0); }
+.mobile-menu.open { transform: translateX(0); }
 
 .mobile-menu-content {
   display: flex;
@@ -184,10 +176,21 @@
   gap: var(--zq-space-6);
 }
 
+.mobile-logo {
+  display: block;
+  margin-bottom: var(--zq-space-4);
+}
+
+.mobile-logo-img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
 .mobile-link {
   font-family: var(--zq-font-display);
   font-size: var(--zq-text-3xl);
-  color: var(--zq-black);
+  color: var(--zq-ivory);
   transition: color var(--zq-duration-fast);
 }
 
@@ -199,4 +202,6 @@
   .nav-links { display: none; }
   .nav-mobile-toggle { display: flex; }
   .nav-actions { gap: var(--zq-space-3); }
+  .nav-logo-img { height: 40px; }
+  .zq-nav.scrolled .nav-logo-img { height: 35px; }
 }

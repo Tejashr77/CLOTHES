@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './preloader.css';
 
 const Preloader = ({ onComplete }) => {
-  const [phase, setPhase] = useState('loading'); // loading -> reveal -> done
+  const [phase, setPhase] = useState('loading');
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setPhase('reveal'), 1800);
+    const timer1 = setTimeout(() => setPhase('reveal'), 2200);
     const timer2 = setTimeout(() => {
       setPhase('done');
       onComplete?.();
-    }, 2800);
+    }, 3200);
     return () => { clearTimeout(timer1); clearTimeout(timer2); };
   }, [onComplete]);
 
@@ -18,15 +18,12 @@ const Preloader = ({ onComplete }) => {
   return (
     <div className={`preloader ${phase === 'reveal' ? 'preloader-exit' : ''}`}>
       <div className="preloader-content">
-        <div className="preloader-logo">
-          <div className="preloader-z">Z</div>
-          <div className="preloader-q">Q</div>
-        </div>
+        <img src="/logo_0_0.jpeg" alt="ZaQueen" className="preloader-logo" />
         <div className="preloader-tagline">
-          <span className="preloader-word" style={{ animationDelay: '0.3s' }}>Your</span>
-          <span className="preloader-word" style={{ animationDelay: '0.5s' }}>vision.</span>
-          <span className="preloader-word" style={{ animationDelay: '0.8s' }}>Our</span>
-          <span className="preloader-word" style={{ animationDelay: '1.0s' }}>couture.</span>
+          <span className="preloader-word" style={{ animationDelay: '0.5s' }}>Your</span>
+          <span className="preloader-word" style={{ animationDelay: '0.7s' }}>design,</span>
+          <span className="preloader-word" style={{ animationDelay: '0.9s' }}>our</span>
+          <span className="preloader-word" style={{ animationDelay: '1.1s' }}>couture.</span>
         </div>
         <div className="preloader-line" />
       </div>

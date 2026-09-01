@@ -28,9 +28,8 @@ const Navbar = () => {
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </div>
 
-          <Link to="/" className="nav-logo">
-            <span className="logo-z">Z</span>
-            <span className="logo-q">Q</span>
+          <Link to="/" className="nav-logo" data-cursor="link">
+            <img src="/logo_0_0.jpeg" alt="ZaQueen" className="nav-logo-img" />
           </Link>
 
           <div className="nav-links">
@@ -65,9 +64,12 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
+          <Link to="/" className="mobile-logo" onClick={() => setMobileOpen(false)}>
+            <img src="/logo_0_0.jpeg" alt="ZaQueen" className="mobile-logo-img" />
+          </Link>
+          <div className="mobile-divider" />
           <Link to="/shop" className="mobile-link">Shop RTW</Link>
           <Link to="/bespoke" className="mobile-link">Bespoke Couture</Link>
           <Link to="/about" className="mobile-link">Our Story</Link>
