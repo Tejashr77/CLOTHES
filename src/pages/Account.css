@@ -1,0 +1,67 @@
+.account-container {
+  max-width: 480px;
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-xl);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.account-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.account-tab {
+  flex: 1;
+  padding: var(--spacing-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-gray-dark);
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.account-tab.active {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+.account-form .form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.account-form label {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  display: block;
+}
+
+.account-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-gray);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.account-form input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+}
+
+.account-submit {
+  width: 100%;
+}

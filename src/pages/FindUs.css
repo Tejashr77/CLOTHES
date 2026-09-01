@@ -1,0 +1,67 @@
+.findus-header {
+  padding: var(--spacing-xl) 0;
+}
+
+.findus-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.findus-header p {
+  color: var(--color-gray-dark);
+  font-size: 1.05rem;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.location-card {
+  background-color: var(--color-white);
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.location-icon {
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+}
+
+.location-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.location-card p {
+  font-size: 0.9rem;
+  color: var(--color-gray-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.map-placeholder {
+  margin-bottom: var(--spacing-xl);
+}
+
+.map-box {
+  background-color: var(--color-gray-light);
+  padding: var(--spacing-xl);
+  text-align: center;
+  border: 1px dashed var(--color-gray);
+}
+
+.map-box p {
+  color: var(--color-gray-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+}

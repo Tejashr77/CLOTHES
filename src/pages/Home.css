@@ -1,0 +1,134 @@
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 600px;
+  background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ivory);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 43, 43, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h2 {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-ivory);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 300;
+}
+
+.hero-title {
+  font-size: 4rem;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-lg);
+}
+
+.btn-hero-outline {
+  border-color: var(--color-ivory);
+  color: var(--color-ivory);
+}
+
+.btn-hero-outline:hover {
+  background-color: var(--color-ivory);
+  color: var(--color-black);
+}
+
+.mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mt-lg {
+  margin-top: var(--spacing-lg);
+}
+
+.featured-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bespoke-highlight {
+  background-color: var(--color-white);
+  padding: var(--spacing-xl) 0;
+}
+
+.bespoke-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.bespoke-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 120%;
+}
+
+.bespoke-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bespoke-text h2 {
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+}
+
+.bespoke-text p {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.bespoke-steps {
+  margin-bottom: var(--spacing-lg);
+}
+
+.bespoke-steps li {
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .bespoke-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .bespoke-image-wrapper {
+    padding-top: 100%;
+    margin-bottom: var(--spacing-lg);
+  }
+}
