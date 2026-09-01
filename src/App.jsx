@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/cursor/CustomCursor';
 import Preloader from './components/preloader/Preloader';
+import ChatWidget from './components/ChatWidget';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import BespokeCouture from './pages/BespokeCouture';
@@ -21,6 +22,7 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Wishlist from './pages/Wishlist';
 import Journal from './pages/Journal';
+import Returns from './pages/Returns';
 import AdminDashboard from './pages/AdminDashboard';
 
 const ScrollToTop = () => {
@@ -59,10 +61,12 @@ function App() {
             <Route path="/find-us" element={<FindUs />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/journal" element={<Journal />} />
+            <Route path="/returns" element={<Returns />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
         <Footer />
+        <ChatWidget />
       </div>
     </Router>
   );
