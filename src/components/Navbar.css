@@ -11,18 +11,18 @@
   font-size: var(--zq-text-xs);
   letter-spacing: var(--zq-tracking-wider);
   text-transform: uppercase;
-  transition: transform var(--zq-duration-normal) var(--zq-ease-out);
-  overflow: hidden;
+  position: relative;
+  z-index: var(--zq-z-sticky);
 }
 
 .zq-topbar.hidden-bar {
-  transform: translateY(-100%);
+  margin-top: -32px;
 }
 
 /* ─── Main Nav ─── */
 .zq-nav {
   position: fixed;
-  top: 0;
+  top: 32px;
   left: 0;
   right: 0;
   z-index: var(--zq-z-sticky);
@@ -482,6 +482,7 @@
   }
 
   .zq-nav {
+    top: 0;
     padding: var(--zq-space-2_5) 0;
   }
 

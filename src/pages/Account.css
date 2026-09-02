@@ -4,7 +4,7 @@
 
 .page-container {
   min-height: 100vh;
-  padding-top: calc(var(--zq-space-20) + 60px);
+  padding-top: calc(32px + 60px + var(--zq-space-10));
   padding-bottom: var(--zq-space-section);
   display: flex;
   align-items: flex-start;
