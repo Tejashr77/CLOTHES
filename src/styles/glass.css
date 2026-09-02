@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Glassmorphism Component Kit
-   Shared recipe: blur + opacity + border + shadow
+   Glassmorphism Component Kit — Luxe Edition
    ═══════════════════════════════════════════════════════ */
 
 /* ─── Glass Panel (base) ─── */
@@ -61,8 +60,12 @@
 }
 
 .glass-card:hover {
-  transform: translateY(-2px);
   box-shadow: var(--zq-glass-shadow-lg);
+}
+
+.glass-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--zq-shadow-xl);
 }
 
 /* ─── Glass Modal ─── */
@@ -104,6 +107,10 @@
   transition: transform var(--zq-duration-slow) var(--zq-ease-spring);
 }
 
+.glass-modal.max-w-2xl {
+  max-width: 768px;
+}
+
 .glass-modal-overlay.active .glass-modal {
   transform: translateY(0) scale(1);
 }
@@ -125,6 +132,18 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.glass-btn:active {
+  transform: scale(0.97);
+}
+
+.glass-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .glass-btn-primary {
@@ -133,7 +152,7 @@
   border: 1px solid var(--zq-gold);
 }
 
-.glass-btn-primary:hover {
+.glass-btn-primary:hover:not(:disabled) {
   background: var(--zq-gold-dark);
   box-shadow: var(--zq-shadow-gold);
   transform: translateY(-1px);
@@ -145,7 +164,7 @@
   border: 1px solid var(--zq-gray-300);
 }
 
-.glass-btn-outline:hover {
+.glass-btn-outline:hover:not(:disabled) {
   border-color: var(--zq-gold);
   color: var(--zq-gold);
   background: var(--zq-glass-bg-gold);
@@ -157,7 +176,7 @@
   border: 1px solid transparent;
 }
 
-.glass-btn-ghost:hover {
+.glass-btn-ghost:hover:not(:disabled) {
   background: var(--zq-glass-bg);
   border-color: var(--zq-glass-border);
 }
@@ -170,7 +189,7 @@
   border: 1px solid var(--zq-glass-border);
 }
 
-.glass-btn-glass:hover {
+.glass-btn-glass:hover:not(:disabled) {
   background: var(--zq-glass-bg-dark);
   color: var(--zq-ivory);
   border-color: var(--zq-glass-border-dark);
@@ -182,9 +201,10 @@
   border: 1px solid var(--zq-gray-700);
 }
 
-.glass-btn-dark:hover {
+.glass-btn-dark:hover:not(:disabled) {
   background: var(--zq-gray-800);
   box-shadow: var(--zq-shadow-lg);
+  transform: translateY(-1px);
 }
 
 .glass-btn-lg {
@@ -195,6 +215,11 @@
 .glass-btn-sm {
   padding: var(--zq-space-2) var(--zq-space-4);
   font-size: var(--zq-text-xs);
+}
+
+.glass-btn-xs {
+  padding: var(--zq-space-1) var(--zq-space-3);
+  font-size: var(--zq-text-2xs);
 }
 
 /* ─── Glass Inputs ─── */
@@ -210,12 +235,12 @@
   font-size: var(--zq-text-base);
   color: var(--zq-black);
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
+  outline: none;
 }
 
 .glass-input:focus {
-  outline: none;
   border-color: var(--zq-gold);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
   background: rgba(255, 255, 255, 0.7);
 }
 
@@ -223,9 +248,15 @@
   color: var(--zq-gray-400);
 }
 
+.glass-input.error {
+  border-color: var(--zq-error);
+  box-shadow: 0 0 0 3px rgba(196, 62, 62, 0.1);
+}
+
 .glass-textarea {
   resize: vertical;
   min-height: 120px;
+  line-height: var(--zq-leading-relaxed);
 }
 
 .glass-select {
@@ -234,6 +265,21 @@
   background-repeat: no-repeat;
   background-position: right var(--zq-space-4) center;
   padding-right: var(--zq-space-10);
+  cursor: pointer;
+}
+
+.glass-form-group {
+  margin-bottom: var(--zq-space-5);
+}
+
+.glass-form-label {
+  display: block;
+  font-size: var(--zq-text-sm);
+  font-weight: var(--zq-weight-medium);
+  color: var(--zq-gray-700);
+  margin-bottom: var(--zq-space-2);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-tracking-wide);
 }
 
 /* ─── Glass Flyout (Cart Drawer) ─── */
@@ -275,6 +321,14 @@
 
 .glass-flyout.active {
   transform: translateX(0);
+}
+
+/* ─── Divider ─── */
+.glass-divider {
+  height: 1px;
+  background: var(--zq-gray-200);
+  border: none;
+  margin: var(--zq-space-6) 0;
 }
 
 /* ─── Reduced blur on mobile for performance ─── */

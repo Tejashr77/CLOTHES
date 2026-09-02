@@ -1,11 +1,23 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useProducts } from '../context/ProductsContext';
-import { useCart } from '../context/CartContext';
 import { useInfiniteScroll } from '../hooks';
-import { GlassButton, GlassInput, GlassModal } from '../components/glass';
+import { GlassButton, GlassModal } from '../components/glass';
 import ProductCard from '../components/ProductCard';
-import { SlidersHorizontal, Grid3X3, LayoutGrid, X, ChevronDown } from 'lucide-react';
+import { SlidersHorizontal, Grid3X3, LayoutGrid, X, Search } from 'lucide-react';
 import './Shop.css';
+
+const Reveal = ({ children, delay = 0 }) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.unobserve(el); } }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return <div ref={ref} className={`reveal ${inView ? 'reveal-visible' : ''}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
+};
 
 const Shop = () => {
   const { products, loading } = useProducts();
@@ -22,7 +34,6 @@ const Shop = () => {
     try { return JSON.parse(localStorage.getItem('zq-recent') || '[]'); } catch { return []; }
   });
 
-  // Filter & Sort
   let filtered = products.filter(p => {
     if (filter !== 'All' && p.category !== filter) return false;
     if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
@@ -33,24 +44,19 @@ const Shop = () => {
     case 'price-low': filtered.sort((a, b) => a.price - b.price); break;
     case 'price-high': filtered.sort((a, b) => b.price - a.price); break;
     case 'new': filtered.reverse(); break;
-    case 'popularity': break;
     default: break;
   }
 
   const visibleProducts = filtered.slice(0, displayCount);
   const hasMore = displayCount < filtered.length;
 
-  const loadMore = useCallback(() => {
-    setDisplayCount(prev => prev + 12);
-  }, []);
-
+  const loadMore = useCallback(() => { setDisplayCount(prev => prev + 12); }, []);
   const loadMoreRef = useInfiniteScroll(loadMore, hasMore);
 
-  // Recently Viewed
   const addRecentlyViewed = (product) => {
     setRecentlyViewed(prev => {
-      const filtered = prev.filter(p => p._id !== product._id && p.id !== product.id);
-      return [product, ...filtered].slice(0, 8);
+      const f = prev.filter(p => p._id !== product._id && p.id !== product.id);
+      return [product, ...f].slice(0, 8);
     });
   };
 
@@ -64,19 +70,19 @@ const Shop = () => {
   return (
     <div className="shop-page">
       <div className="container">
-        {/* Header */}
+        {/* Page Header */}
         <div className="shop-page-header">
           <Reveal>
-            <p className="uppercase tracking-widest text-xs mb-2" style={{ color: 'var(--zq-gold)' }}>Collection</p>
+            <p className="section-eyebrow">Collection</p>
             <h1>Ready-to-Wear</h1>
           </Reveal>
         </div>
 
         {/* Toolbar */}
-        <div className="shop-toolbar glass">
+        <div className="shop-toolbar">
           <div className="shop-toolbar-left">
             <button className="filter-toggle" onClick={() => setShowFilters(!showFilters)}>
-              <SlidersHorizontal size={18} />
+              <SlidersHorizontal size={18} strokeWidth={1.5} />
               <span className="hide-mobile">Filters</span>
             </button>
             <span className="result-count">{filtered.length} Results</span>
@@ -84,50 +90,53 @@ const Shop = () => {
           <div className="shop-toolbar-right">
             <div className="view-toggle">
               <button className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`} onClick={() => setViewMode('grid')} aria-label="Grid view">
-                <Grid3X3 size={18} />
+                <Grid3X3 size={16} strokeWidth={1.5} />
               </button>
               <button className={`view-btn ${viewMode === 'masonry' ? 'active' : ''}`} onClick={() => setViewMode('masonry')} aria-label="Masonry view">
-                <LayoutGrid size={18} />
+                <LayoutGrid size={16} strokeWidth={1.5} />
               </button>
             </div>
-            <select className="sort-select glass-input" value={sort} onChange={e => setSort(e.target.value)}>
+            <select className="sort-select glass-select glass-input" value={sort} onChange={e => setSort(e.target.value)}>
               <option value="featured">Featured</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
               <option value="new">New Arrivals</option>
-              <option value="popularity">Popularity</option>
             </select>
           </div>
         </div>
 
         <div className="shop-layout">
           {/* Sidebar Filters */}
-          <aside className={`shop-sidebar glass ${showFilters ? 'sidebar-open' : ''}`}>
+          <aside className={`shop-sidebar ${showFilters ? 'sidebar-open' : ''}`}>
             <div className="sidebar-header">
               <h3>Filters</h3>
-              <button onClick={() => setShowFilters(false)} className="hide-mobile-only"><X size={18} /></button>
+              <button onClick={() => setShowFilters(false)} className="sidebar-close hide-mobile-only">
+                <X size={18} strokeWidth={1.5} />
+              </button>
             </div>
 
             <div className="filter-section">
-              <h4>Category</h4>
-              {categories.map(cat => (
-                <button key={cat} className={`filter-chip ${filter === cat ? 'active' : ''}`} onClick={() => setFilter(cat)}>
-                  {cat === 'All' ? 'All Collections' : cat === 'Accessible' ? 'Accessible Luxury' : cat === 'Statement' ? 'Statement Pieces' : cat}
-                </button>
-              ))}
+              <h4 className="filter-section-title">Category</h4>
+              <div className="filter-chips">
+                {categories.map(cat => (
+                  <button key={cat} className={`filter-chip ${filter === cat ? 'active' : ''}`} onClick={() => setFilter(cat)}>
+                    {cat === 'All' ? 'All Collections' : cat === 'Accessible' ? 'Accessible Luxury' : cat === 'Statement' ? 'Statement Pieces' : cat}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="filter-section">
-              <h4>Price Range</h4>
+              <h4 className="filter-section-title">Price Range</h4>
               <div className="price-range">
-                <span>₹{priceRange[0].toLocaleString()}</span>
-                <span>₹{priceRange[1].toLocaleString()}</span>
+                <span>₹{priceRange[0].toLocaleString('en-IN')}</span>
+                <span>₹{priceRange[1].toLocaleString('en-IN')}</span>
               </div>
               <input type="range" min="0" max="100000" step="5000" value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], Number(e.target.value)])} className="price-slider" />
             </div>
 
             <div className="filter-section">
-              <h4>Color</h4>
+              <h4 className="filter-section-title">Color</h4>
               <div className="color-chips">
                 {colors.map(color => (
                   <button key={color} className={`color-chip ${selectedColors.includes(color) ? 'active' : ''}`} onClick={() => {
@@ -163,8 +172,14 @@ const Shop = () => {
 
             {!loading && visibleProducts.length === 0 && (
               <div className="empty-state text-center">
-                <h3>No products found</h3>
-                <p>Try adjusting your filters</p>
+                <div className="empty-state-icon">
+                  <Search size={48} strokeWidth={1} />
+                </div>
+                <h3 className="empty-state-title">No products found</h3>
+                <p className="empty-state-desc">Try adjusting your filters or browse all collections.</p>
+                <GlassButton variant="outline" onClick={() => { setFilter('All'); setPriceRange([0, 100000]); setSelectedColors([]); }}>
+                  Clear Filters
+                </GlassButton>
               </div>
             )}
           </main>
@@ -173,7 +188,7 @@ const Shop = () => {
         {/* Recently Viewed */}
         {recentlyViewed.length > 0 && (
           <section className="recently-viewed">
-            <h3 className="mb-6">Recently Viewed</h3>
+            <h3 className="recently-title">Recently Viewed</h3>
             <div className="recently-grid">
               {recentlyViewed.slice(0, 4).map(product => (
                 <ProductCard key={product._id || product.id} product={product} compact />
@@ -191,14 +206,14 @@ const Shop = () => {
               <img src={quickViewProduct.image} alt={quickViewProduct.name} />
             </div>
             <div className="quick-view-details">
-              <p className="uppercase tracking-widest text-xs mb-2" style={{ color: 'var(--zq-gold)' }}>{quickViewProduct.category}</p>
-              <h3 className="mb-2">{quickViewProduct.name}</h3>
-              <p className="mb-4" style={{ fontSize: 'var(--zq-text-xl)', fontWeight: 600 }}>₹{quickViewProduct.price.toLocaleString()}</p>
-              <p className="mb-6" style={{ color: 'var(--zq-gray-500)', fontSize: 'var(--zq-text-sm)' }}>{quickViewProduct.description}</p>
+              <p className="section-eyebrow">{quickViewProduct.category}</p>
+              <h3 className="quick-view-name">{quickViewProduct.name}</h3>
+              <p className="quick-view-price">₹{quickViewProduct.price.toLocaleString('en-IN')}</p>
+              <p className="quick-view-desc">{quickViewProduct.description}</p>
               {quickViewProduct.sizes && (
-                <div className="mb-4">
-                  <p className="text-sm mb-2" style={{ fontWeight: 500 }}>Size</p>
-                  <div className="flex gap-2">
+                <div className="quick-view-sizes">
+                  <p className="quick-view-label">Size</p>
+                  <div className="size-options">
                     {quickViewProduct.sizes.map(size => (
                       <button key={size} className={`size-btn ${selectedSize === size ? 'active' : ''}`} onClick={() => setSelectedSize(size)}>{size}</button>
                     ))}
@@ -212,19 +227,6 @@ const Shop = () => {
       </GlassModal>
     </div>
   );
-};
-
-const Reveal = ({ children, delay = 0 }) => {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.unobserve(el); } }, { threshold: 0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return <div ref={ref} className={`reveal ${inView ? 'reveal-visible' : ''}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 };
 
 export default Shop;

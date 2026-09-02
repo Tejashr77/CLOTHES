@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext';
 import { useCart } from '../context/CartContext';
-import { GlassButton, GlassModal, GlassInput } from '../components/glass';
+import { GlassButton, GlassModal } from '../components/glass';
 import ProductCard from '../components/ProductCard';
 import { formatPrice } from '../utils/helpers';
-import { Heart, Share2, Truck, RotateCcw, Shield, Star, ChevronDown, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Heart, Share2, Truck, RotateCcw, Shield, Star, ChevronDown, ZoomIn, Minus, Plus } from 'lucide-react';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
@@ -21,7 +21,6 @@ const ProductDetail = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showZoom, setShowZoom] = useState(false);
-  const [zoomPos, setZoomPos] = useState({ x: 0, y: 0 });
   const [activeTab, setActiveTab] = useState('details');
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [pincode, setPincode] = useState('');
@@ -66,10 +65,10 @@ const ProductDetail = () => {
     setTimeout(() => setAdded(false), 2500);
   };
 
-  const handleMouseMove = (e) => {
-    if (!imageRef.current) return;
-    const rect = imageRef.current.getBoundingClientRect();
-    setZoomPos({ x: ((e.clientX - rect.left) / rect.width) * 100, y: ((e.clientY - rect.top) / rect.height) * 100 });
+  const handleBuyNow = () => {
+    if (product.sizes?.length > 0 && !selectedSize) { alert('Please select a size'); return; }
+    addToCart(product, quantity, selectedSize);
+    navigate('/checkout');
   };
 
   const checkDelivery = () => {
@@ -79,13 +78,19 @@ const ProductDetail = () => {
     }
   };
 
-  if (loading) return <div className="page-container container text-center"><p style={{ marginTop: '4rem' }}>Loading...</p></div>;
+  if (loading) return (
+    <div className="pdp-loading">
+      <div className="pdp-loading-skeleton" />
+      <p>Loading...</p>
+    </div>
+  );
 
   if (!product) {
     return (
-      <div className="page-container container text-center">
-        <h1 style={{ marginTop: '4rem' }}>Product Not Found</h1>
-        <Link to="/shop" style={{ marginTop: '2rem', display: 'inline-block' }}><GlassButton variant="primary">Back to Shop</GlassButton></Link>
+      <div className="pdp-not-found container text-center">
+        <h1>Product Not Found</h1>
+        <p className="text-muted mb-8">The product you're looking for doesn't exist or has been removed.</p>
+        <Link to="/shop"><GlassButton variant="primary">Back to Shop</GlassButton></Link>
       </div>
     );
   }
@@ -95,9 +100,11 @@ const ProductDetail = () => {
       <div className="container">
         {/* Breadcrumb */}
         <nav className="breadcrumb" aria-label="Breadcrumb">
-          <Link to="/">Home</Link> <span>/</span>
-          <Link to="/shop">Shop</Link> <span>/</span>
-          <span className="current">{product.name}</span>
+          <Link to="/">Home</Link>
+          <span className="breadcrumb-sep">/</span>
+          <Link to="/shop">Shop</Link>
+          <span className="breadcrumb-sep">/</span>
+          <span className="breadcrumb-current">{product.name}</span>
         </nav>
 
         <div className="pdp-layout">
@@ -110,21 +117,23 @@ const ProductDetail = () => {
                 </button>
               ))}
             </div>
-            <div className="pdp-main-image" ref={imageRef} onMouseMove={handleMouseMove} onClick={() => setShowZoom(true)} data-cursor="view">
+            <div className="pdp-main-image" ref={imageRef} onClick={() => setShowZoom(true)} data-cursor="view">
               <img src={allImages[activeImage]} alt={product.name} />
               <div className="pdp-image-badges">
-                {product.scarcity && <span className="badge badge-scarcity">{product.scarcity}</span>}
-                {product.isPreorder && <span className="badge badge-preorder">Pre-Order</span>}
+                {product.scarcity && <span className="pd-badge pd-badge-scarcity">{product.scarcity}</span>}
+                {product.isPreorder && <span className="pd-badge pd-badge-preorder">Pre-Order</span>}
               </div>
-              <button className="zoom-btn glass" aria-label="Zoom image"><ZoomIn size={18} /></button>
+              <button className="zoom-btn" aria-label="Zoom image"><ZoomIn size={18} strokeWidth={1.5} /></button>
             </div>
           </div>
 
           {/* Details */}
           <div className="pdp-info">
-            <p className="pdp-category uppercase tracking-widest text-xs" style={{ color: 'var(--zq-gold)' }}>{product.category}</p>
+            <p className="pdp-category">{product.category}</p>
             <h1 className="pdp-name">{product.name}</h1>
-            <p className="pdp-price">{formatPrice(product.price)}</p>
+            <div className="pdp-price-row">
+              <p className="pdp-price">{formatPrice(product.price)}</p>
+            </div>
 
             {/* Color Swatches */}
             <div className="pdp-section">
@@ -139,7 +148,7 @@ const ProductDetail = () => {
             {/* Size Selection */}
             {product.sizes?.length > 0 && (
               <div className="pdp-section">
-                <div className="flex justify-between items-center">
+                <div className="pdp-label-row">
                   <p className="pdp-label">Size{selectedSize ? `: ${selectedSize}` : ''}</p>
                   <button className="size-guide-link" onClick={() => setShowSizeGuide(true)}>Size Guide</button>
                 </div>
@@ -155,9 +164,13 @@ const ProductDetail = () => {
             <div className="pdp-section">
               <p className="pdp-label">Quantity</p>
               <div className="quantity-selector">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease">-</button>
-                <span>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)} aria-label="Increase">+</button>
+                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease" disabled={quantity <= 1}>
+                  <Minus size={16} strokeWidth={1.5} />
+                </button>
+                <span className="quantity-value">{quantity}</span>
+                <button onClick={() => setQuantity(quantity + 1)} aria-label="Increase">
+                  <Plus size={16} strokeWidth={1.5} />
+                </button>
               </div>
             </div>
 
@@ -166,15 +179,21 @@ const ProductDetail = () => {
               <GlassButton variant="primary" size="lg" className="pdp-add-btn" onClick={handleAddToCart}>
                 {added ? 'Added to Cart!' : 'Add to Cart'}
               </GlassButton>
-              <button className={`wishlist-btn ${isWishlisted ? 'active' : ''}`} onClick={() => setIsWishlisted(!isWishlisted)} aria-label="Add to wishlist">
-                <Heart size={20} fill={isWishlisted ? 'var(--zq-gold)' : 'none'} />
+              <button className="pdp-action-icon" onClick={handleBuyNow} aria-label="Buy now" title="Buy now">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
               </button>
-              <button className="share-btn" aria-label="Share"><Share2 size={20} /></button>
+              <button className={`pdp-action-icon ${isWishlisted ? 'active' : ''}`} onClick={() => setIsWishlisted(!isWishlisted)} aria-label="Add to wishlist">
+                <Heart size={20} strokeWidth={1.5} fill={isWishlisted ? 'var(--zq-gold)' : 'none'} />
+              </button>
+              <button className="pdp-action-icon" aria-label="Share"><Share2 size={20} strokeWidth={1.5} /></button>
             </div>
 
             {/* Delivery Estimator */}
-            <div className="pdp-delivery glass-subtle">
-              <Truck size={18} />
+            <div className="pdp-delivery">
+              <div className="delivery-header">
+                <Truck size={18} strokeWidth={1.5} />
+                <span>Delivery</span>
+              </div>
               <div className="delivery-input">
                 <input type="text" placeholder="Enter pincode" value={pincode} onChange={e => setPincode(e.target.value.replace(/\D/g, '').slice(0, 6))} className="glass-input" />
                 <GlassButton variant="ghost" size="sm" onClick={checkDelivery}>Check</GlassButton>
@@ -186,9 +205,9 @@ const ProductDetail = () => {
 
             {/* Trust Badges */}
             <div className="pdp-trust">
-              <div className="trust-item"><Truck size={16} /><span>Free shipping above ₹50,000</span></div>
-              <div className="trust-item"><RotateCcw size={16} /><span>7-day exchange for RTW</span></div>
-              <div className="trust-item"><Shield size={16} /><span>Authenticity guaranteed</span></div>
+              <div className="trust-item"><Truck size={16} strokeWidth={1.5} /><span>Free shipping above ₹50,000</span></div>
+              <div className="trust-item"><RotateCcw size={16} strokeWidth={1.5} /><span>7-day exchange for RTW</span></div>
+              <div className="trust-item"><Shield size={16} strokeWidth={1.5} /><span>Authenticity guaranteed</span></div>
             </div>
 
             {/* Tabs */}
@@ -227,7 +246,9 @@ const ProductDetail = () => {
                     <div className="reviews-summary">
                       <div className="rating-big">4.8</div>
                       <div>
-                        <div className="stars">{[1,2,3,4,5].map(i => <Star key={i} size={16} fill="var(--zq-gold)" />)}</div>
+                        <div className="stars">
+                          {[1,2,3,4,5].map(i => <Star key={i} size={16} fill="var(--zq-gold)" stroke="none" />)}
+                        </div>
                         <p className="text-sm text-muted">Based on {reviews.length} reviews</p>
                       </div>
                     </div>
@@ -235,11 +256,13 @@ const ProductDetail = () => {
                       <div key={review.id} className="review-card">
                         <div className="review-header">
                           <img src={review.image} alt={review.name} className="review-avatar" />
-                          <div>
-                            <p className="review-name">{review.name} {review.verified && <span className="verified-badge">Verified Purchase</span>}</p>
+                          <div className="review-info">
+                            <p className="review-name">{review.name} {review.verified && <span className="verified-badge">Verified</span>}</p>
                             <p className="text-xs text-muted">{review.date}</p>
                           </div>
-                          <div className="review-stars">{[1,2,3,4,5].map(i => <Star key={i} size={14} fill={i <= review.rating ? 'var(--zq-gold)' : 'var(--zq-gray-200)'} />)}</div>
+                          <div className="review-stars">
+                            {[1,2,3,4,5].map(i => <Star key={i} size={14} fill={i <= review.rating ? 'var(--zq-gold)' : 'var(--zq-gray-200)'} stroke="none" />)}
+                          </div>
                         </div>
                         <p className="review-text">{review.text}</p>
                       </div>
@@ -267,7 +290,7 @@ const ProductDetail = () => {
 
       {/* Size Guide Modal */}
       <GlassModal isOpen={showSizeGuide} onClose={() => setShowSizeGuide(false)} title="Size Guide">
-        <p className="mb-4" style={{ color: 'var(--zq-gray-500)' }}>All measurements are in inches. Measure yourself and compare.</p>
+        <p className="mb-4 text-muted">All measurements are in inches. Measure yourself and compare.</p>
         <table className="size-guide-table">
           <thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr></thead>
           <tbody>
@@ -276,7 +299,7 @@ const ProductDetail = () => {
             ))}
           </tbody>
         </table>
-        <div className="mt-4 p-4" style={{ background: 'var(--zq-glass-bg-gold)', borderRadius: 'var(--zq-radius-md)' }}>
+        <div className="mt-4" style={{ background: 'var(--zq-gold-muted)', borderRadius: 'var(--zq-radius-md)', padding: 'var(--zq-space-4)' }}>
           <p className="text-sm"><strong>Fit Predictor:</strong> If you're between sizes, we recommend sizing down for a fitted look or up for a relaxed fit.</p>
         </div>
       </GlassModal>
@@ -284,7 +307,7 @@ const ProductDetail = () => {
       {/* Zoom Modal */}
       <GlassModal isOpen={showZoom} onClose={() => setShowZoom(false)}>
         <div className="zoom-view">
-          <img src={allImages[activeImage]} alt={product.name} style={{ width: '100%' }} />
+          <img src={allImages[activeImage]} alt={product.name} style={{ width: '100%', borderRadius: 'var(--zq-radius-md)' }} />
         </div>
       </GlassModal>
     </div>
