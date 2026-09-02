@@ -55,18 +55,21 @@ const BespokeCouture = () => {
 
   if (submitted) {
     return (
-      <div className="page-container container text-center">
-        <div style={{ marginTop: '4rem' }}>
-          <h1>Design Request Received!</h1>
-          <p style={{ marginTop: '1rem', color: 'var(--color-gray-dark)', maxWidth: 600, margin: '1rem auto' }}>
-            Thank you for your bespoke order. Our design team will review your inspiration and measurements,
-            and reach out within 48 hours to begin the collaborative design process.
+      <div className="bespoke-page page-container container">
+        <div className="bespoke-success">
+          <h1>Design Request Received</h1>
+          <p>
+            Thank you for your bespoke order. Our design team will review your
+            inspiration and measurements, and reach out within 48 hours to begin
+            the collaborative design process.
           </p>
-          <p style={{ color: 'var(--color-gold)', fontWeight: 600, marginTop: '1rem' }}>
+          <p className="success-highlight">
             40% advance payment link will be sent via email.
           </p>
-          <div style={{ marginTop: '2rem' }}>
-            <Button variant="primary" onClick={() => setSubmitted(false)}>Submit Another Request</Button>
+          <div style={{ marginTop: 'var(--zq-space-8)' }}>
+            <Button variant="primary" onClick={() => setSubmitted(false)}>
+              Submit Another Request
+            </Button>
           </div>
         </div>
       </div>
@@ -75,33 +78,48 @@ const BespokeCouture = () => {
 
   return (
     <div className="bespoke-page page-container container">
-      <div className="bespoke-header text-center">
+      <div className="bespoke-header">
         <h1>Bespoke Couture</h1>
         <p>Design your own ZaQueen masterpiece. Upload your inspiration and let's begin.</p>
       </div>
 
       <div className="bespoke-form-container">
-        {error && <p style={{ color: 'var(--color-accent)', marginBottom: '1rem', textAlign: 'center' }}>{error}</p>}
+        {error && <div className="bespoke-error">{error}</div>}
+
         <form className="bespoke-form" onSubmit={handleSubmit}>
+          {/* Step 1: Upload */}
           <div className="form-step">
-            <h3>1. Upload Inspiration</h3>
+            <h3>
+              <span className="form-step-number">1</span>
+              Upload Inspiration
+            </h3>
+            <p className="form-step-subtitle">Add a reference photo of the outfit you love.</p>
             <div className="upload-box" onClick={() => fileInputRef.current?.click()}>
               {fileName ? (
-                <p style={{ color: 'var(--color-gold)', fontWeight: 500 }}>{fileName}</p>
+                <p className="upload-filename">{fileName}</p>
               ) : (
                 <>
+                  <svg className="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
                   <p>Click to upload or drag & drop your outfit photo here</p>
-                  <Button variant="outline" type="button">Select Image</Button>
+                  <button type="button" className="upload-btn">Select Image</button>
                 </>
               )}
               <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileChange} />
             </div>
           </div>
 
+          {/* Step 2: Measurements */}
           <div className="form-step">
-            <h3>2. Your Measurements</h3>
-            <p className="help-text">Your privacy is important to us. These details are kept secure.</p>
-            <div className="grid measurement-grid gap-md">
+            <h3>
+              <span className="form-step-number">2</span>
+              Your Measurements
+            </h3>
+            <p className="form-step-subtitle">Your privacy is important to us. These details are kept secure.</p>
+            <div className="measurement-grid">
               <div className="form-group">
                 <label>Bust (inches)</label>
                 <input type="number" placeholder="e.g. 34" value={form.bust} onChange={e => setForm({ ...form, bust: e.target.value })} />
@@ -121,12 +139,17 @@ const BespokeCouture = () => {
             </div>
           </div>
 
+          {/* Step 3: Customization */}
           <div className="form-step">
-            <h3>3. Customization Details</h3>
-            <div className="grid measurement-grid gap-md" style={{ marginBottom: '1rem' }}>
+            <h3>
+              <span className="form-step-number">3</span>
+              Customization Details
+            </h3>
+            <p className="form-step-subtitle">Tell us how you'd like your piece to look and feel.</p>
+            <div className="measurement-grid" style={{ marginBottom: 'var(--zq-space-5)' }}>
               <div className="form-group">
                 <label>Preferred Fabric Feel</label>
-                <select className="form-select" value={form.fabric} onChange={e => setForm({ ...form, fabric: e.target.value })}>
+                <select value={form.fabric} onChange={e => setForm({ ...form, fabric: e.target.value })}>
                   <option>Flowy & Light (e.g., Chiffon, Silk)</option>
                   <option>Structured & Heavy (e.g., Velvet, Brocade)</option>
                   <option>Stretchy & Form-fitting</option>
@@ -144,9 +167,12 @@ const BespokeCouture = () => {
             </div>
           </div>
 
-          <div className="form-actions text-center mt-lg">
+          {/* Submit */}
+          <div className="form-actions">
             <p className="payment-note">40% upfront payment is required to begin the design process.</p>
-            <Button variant="primary" disabled={loading}>{loading ? 'Submitting...' : 'Proceed to Payment (40%)'}</Button>
+            <Button variant="primary" disabled={loading}>
+              {loading ? 'Submitting...' : 'Proceed to Payment (40%)'}
+            </Button>
           </div>
         </form>
       </div>
