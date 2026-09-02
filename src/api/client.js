@@ -10,7 +10,8 @@ const headers = (isFormData = false) => {
 };
 
 const handleResponse = async (res) => {
-  const data = await res.json();
+  const text = await res.text();
+  const data = text ? JSON.parse(text) : {};
   if (!res.ok) throw new Error(data.message || 'Request failed');
   return data;
 };
