@@ -14,17 +14,18 @@ const Account = () => {
   const [error, setError] = useState('');
   const [loginForm, setLoginForm] = useState({ email: '', password: '' });
   const [registerForm, setRegisterForm] = useState({ name: '', email: '', password: '', confirm: '' });
+
   if (isAuthenticated) {
     return (
       <div className="page-container container">
         <div className="account-container">
-          <h2 style={{ marginBottom: '1.5rem' }}>My Account</h2>
-          <div style={{ marginBottom: '1rem', padding: '1rem', background: 'var(--color-gray-light)' }}>
-            <p><strong>{user.name}</strong></p>
-            <p style={{ color: 'var(--color-gray-dark)' }}>{user.email}</p>
-            {user.role === 'admin' && <p style={{ color: 'var(--color-gold)', marginTop: '0.5rem' }}>Admin</p>}
+          <h2>My Account</h2>
+          <div className="account-profile-card">
+            <h3>{user.name}</h3>
+            <p>{user.email}</p>
+            {user.role === 'admin' && <span className="account-role-badge">Admin</span>}
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div className="account-actions">
             <Button variant="outline" onClick={() => navigate('/orders')}>My Orders</Button>
             {user.role === 'admin' && <Button variant="outline" onClick={() => navigate('/admin')}>Admin Dashboard</Button>}
             <Button variant="outline" onClick={() => { logout(); navigate('/'); }}>Sign Out</Button>
@@ -75,7 +76,7 @@ const Account = () => {
           <button className={`account-tab ${!isLogin ? 'active' : ''}`} onClick={() => { setIsLogin(false); setError(''); }}>Create Account</button>
         </div>
 
-        {error && <p style={{ color: 'var(--color-accent)', marginBottom: '1rem', textAlign: 'center' }}>{error}</p>}
+        {error && <p className="account-error">{error}</p>}
 
         {isLogin ? (
           <form className="account-form" onSubmit={handleLogin}>
@@ -87,6 +88,7 @@ const Account = () => {
               <label>Password</label>
               <input type="password" placeholder="Enter password" value={loginForm.password} onChange={e => setLoginForm({ ...loginForm, password: e.target.value })} required />
             </div>
+            <a href="#" className="forgot-password">Forgot password?</a>
             <Button variant="primary" className="account-submit" disabled={loading}>{loading ? 'Signing in...' : 'Sign In'}</Button>
           </form>
         ) : (

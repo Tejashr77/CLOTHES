@@ -1,67 +1,190 @@
-.account-container {
-  max-width: 480px;
-  margin: var(--spacing-xl) auto;
-  padding: var(--spacing-xl);
-  background-color: var(--color-white);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+/* ═══════════════════════════════════════════════════════
+   Account / Sign-In Page — Coastal Blue Edition
+   ═══════════════════════════════════════════════════════ */
+
+.page-container {
+  min-height: 100vh;
+  padding-top: calc(var(--zq-space-20) + 60px);
+  padding-bottom: var(--zq-space-section);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
+.account-container {
+  width: 100%;
+  max-width: 440px;
+  padding: var(--zq-space-10);
+  background: var(--zq-white);
+  border: 1px solid var(--zq-gray-200);
+  border-radius: var(--zq-radius-xl);
+  box-shadow: var(--zq-shadow-md);
+}
+
+.account-container h2 {
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-3xl);
+  text-align: center;
+  margin-bottom: var(--zq-space-2);
+  color: var(--zq-gray-800);
+}
+
+/* ─── Tabs ─── */
 .account-tabs {
   display: flex;
-  border-bottom: 1px solid var(--color-gray);
-  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--zq-gray-200);
+  margin-bottom: var(--zq-space-8);
 }
 
 .account-tab {
   flex: 1;
-  padding: var(--spacing-sm);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: var(--zq-space-3) 0;
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-sm);
+  font-weight: var(--zq-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-gray-dark);
+  letter-spacing: var(--zq-tracking-wider);
+  color: var(--zq-gray-400);
+  background: none;
+  border: none;
   border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: all var(--zq-duration-fast) var(--zq-ease-out);
+}
+
+.account-tab:hover {
+  color: var(--zq-gray-600);
 }
 
 .account-tab.active {
-  color: var(--color-gold);
-  border-bottom-color: var(--color-gold);
+  color: var(--zq-primary);
+  border-bottom-color: var(--zq-primary);
+}
+
+/* ─── Form ─── */
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zq-space-5);
 }
 
 .account-form .form-group {
-  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
 }
 
 .account-form label {
-  font-size: 0.9rem;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 500;
-  display: block;
+  font-size: var(--zq-text-sm);
+  font-weight: var(--zq-weight-medium);
+  color: var(--zq-gray-700);
+  margin-bottom: var(--zq-space-2);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-tracking-wide);
 }
 
 .account-form input {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--color-gray);
-  font-family: var(--font-body);
-  font-size: 1rem;
+  padding: var(--zq-space-3) var(--zq-space-4);
+  border: 1px solid var(--zq-gray-200);
+  border-radius: var(--zq-radius-md);
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-base);
+  color: var(--zq-gray-800);
+  background: var(--zq-white);
+  transition: all var(--zq-duration-fast) var(--zq-ease-out);
+  outline: none;
+}
+
+.account-form input::placeholder {
+  color: var(--zq-gray-400);
 }
 
 .account-form input:focus {
-  outline: none;
-  border-color: var(--color-gold);
+  border-color: var(--zq-primary);
+  box-shadow: 0 0 0 3px rgba(59, 110, 143, 0.10);
 }
 
 .forgot-password {
   display: block;
   text-align: right;
-  font-size: 0.85rem;
-  color: var(--color-gold);
-  margin-bottom: var(--spacing-md);
+  font-size: var(--zq-text-sm);
+  color: var(--zq-primary);
+  margin-bottom: var(--zq-space-5);
+  transition: color var(--zq-duration-fast);
+}
+
+.forgot-password:hover {
+  color: var(--zq-primary-dark);
 }
 
 .account-submit {
   width: 100%;
+  margin-top: var(--zq-space-2);
+}
+
+/* ─── Error ─── */
+.account-error {
+  color: var(--zq-error);
+  font-size: var(--zq-text-sm);
+  text-align: center;
+  padding: var(--zq-space-3);
+  background: var(--zq-error-light);
+  border-radius: var(--zq-radius-md);
+  margin-bottom: var(--zq-space-5);
+}
+
+/* ─── Account Dashboard (logged in) ─── */
+.account-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zq-space-6);
+}
+
+.account-profile-card {
+  padding: var(--zq-space-6);
+  background: var(--zq-gray-50);
+  border-radius: var(--zq-radius-lg);
+  border: 1px solid var(--zq-gray-100);
+}
+
+.account-profile-card h3 {
+  font-size: var(--zq-text-xl);
+  margin-bottom: var(--zq-space-2);
+}
+
+.account-profile-card p {
+  font-size: var(--zq-text-sm);
+  color: var(--zq-gray-500);
+}
+
+.account-role-badge {
+  display: inline-block;
+  margin-top: var(--zq-space-3);
+  padding: var(--zq-space-1) var(--zq-space-3);
+  font-size: var(--zq-text-xs);
+  font-weight: var(--zq-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-tracking-wider);
+  color: var(--zq-accent);
+  background: var(--zq-accent-muted);
+  border-radius: var(--zq-radius-full);
+}
+
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zq-space-3);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .page-container {
+    padding-top: calc(var(--zq-space-16) + 40px);
+    padding-left: var(--zq-space-4);
+    padding-right: var(--zq-space-4);
+  }
+
+  .account-container {
+    padding: var(--zq-space-6);
+  }
 }
