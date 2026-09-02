@@ -32,6 +32,22 @@
   top: 32px;
 }
 
+/* Default: transparent with light text (for dark hero) */
+.zq-nav .nav-link,
+.zq-nav .nav-brand-name,
+.zq-nav .nav-icon-btn {
+  color: var(--zq-sand);
+}
+
+.zq-nav .hamburger span {
+  background: var(--zq-sand);
+}
+
+.zq-nav .cart-badge {
+  border-color: var(--zq-gray-800);
+}
+
+/* Scrolled: white background with dark text */
 .zq-nav.scrolled {
   top: 0;
   background: rgba(252, 252, 251, 0.95);
@@ -40,6 +56,20 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--zq-shadow-sm);
   padding: var(--zq-space-2_5) 0;
+}
+
+.zq-nav.scrolled .nav-link,
+.zq-nav.scrolled .nav-brand-name,
+.zq-nav.scrolled .nav-icon-btn {
+  color: var(--zq-gray-800);
+}
+
+.zq-nav.scrolled .hamburger span {
+  background: var(--zq-gray-800);
+}
+
+.zq-nav.scrolled .cart-badge {
+  border-color: var(--zq-sand);
 }
 
 .zq-nav-inner {
@@ -69,7 +99,6 @@
   display: block;
   width: 100%;
   height: 1.5px;
-  background: var(--zq-gray-800);
   transition: all var(--zq-duration-normal) var(--zq-ease-out);
   transform-origin: center;
 }
@@ -112,7 +141,6 @@
   font-size: var(--zq-text-xl);
   font-weight: var(--zq-weight-regular);
   letter-spacing: var(--zq-tracking-wider);
-  color: var(--zq-gray-800);
   transition: font-size var(--zq-duration-normal) var(--zq-ease-out);
 }
 
@@ -135,7 +163,6 @@
   font-weight: var(--zq-weight-medium);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-wider);
-  color: var(--zq-gray-600);
   position: relative;
   padding: var(--zq-space-2) 0;
   transition: color var(--zq-duration-fast) var(--zq-ease-out);
@@ -154,7 +181,7 @@
 }
 
 .nav-link:hover {
-  color: var(--zq-gray-800);
+  opacity: 0.8;
 }
 
 .nav-link:hover::after,
@@ -163,7 +190,6 @@
 }
 
 .nav-link.active {
-  color: var(--zq-gray-800);
   font-weight: var(--zq-weight-semibold);
 }
 
@@ -175,7 +201,6 @@
 }
 
 .nav-icon-btn {
-  color: var(--zq-gray-800);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,7 +426,6 @@
 }
 
 .mobile-close {
-  color: var(--zq-gray-800);
   padding: var(--zq-space-2);
   border-radius: var(--zq-radius-full);
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
