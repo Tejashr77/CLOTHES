@@ -11,18 +11,16 @@
   font-size: var(--zq-text-xs);
   letter-spacing: var(--zq-tracking-wider);
   text-transform: uppercase;
-  position: relative;
-  z-index: var(--zq-z-sticky);
 }
 
 .zq-topbar.hidden-bar {
-  margin-top: -32px;
+  display: none;
 }
 
 /* ─── Main Nav ─── */
 .zq-nav {
   position: fixed;
-  top: 32px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: var(--zq-z-sticky);
@@ -30,9 +28,13 @@
   transition: all var(--zq-duration-normal) var(--zq-ease-out);
 }
 
+.zq-nav.has-topbar {
+  top: 32px;
+}
+
 .zq-nav.scrolled {
   top: 0;
-  background: rgba(252, 252, 251, 0.92);
+  background: rgba(252, 252, 251, 0.95);
   backdrop-filter: blur(var(--zq-glass-blur-heavy));
   -webkit-backdrop-filter: blur(var(--zq-glass-blur-heavy));
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);

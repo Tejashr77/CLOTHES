@@ -8,7 +8,7 @@ const Footer = () => (
       <div className="footer-grid">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <img src="/logo.svg" alt="ZaQueen" className="footer-logo-img" />
+            <img src="/logo-full.svg" alt="ZaQueen" className="footer-logo-img" />
           </Link>
           <p className="footer-tagline">Your design, our couture, designed to reign.</p>
           <div className="footer-socials">

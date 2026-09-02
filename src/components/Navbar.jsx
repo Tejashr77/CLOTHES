@@ -60,7 +60,7 @@ const Navbar = () => {
       </div>
 
       {/* ─── Main Navbar ─── */}
-      <nav className={`zq-nav ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
+      <nav className={`zq-nav ${scrolled ? 'scrolled' : ''} ${!scrolled ? 'has-topbar' : ''}`} role="navigation" aria-label="Main navigation">
         <div className="zq-nav-inner container">
           {/* Mobile Hamburger */}
           <button
