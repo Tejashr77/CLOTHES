@@ -87,24 +87,29 @@ const BespokeCouture = () => {
         {error && <div className="bespoke-error">{error}</div>}
 
         <form className="bespoke-form" onSubmit={handleSubmit}>
-          {/* Step 1: Upload */}
+          {/* Step 1: Upload Inspiration */}
           <div className="form-step">
-            <h3>
+            <div className="form-step-header">
               <span className="form-step-number">1</span>
-              Upload Inspiration
-            </h3>
+              <span className="form-step-title">Upload Inspiration</span>
+            </div>
             <p className="form-step-subtitle">Add a reference photo of the outfit you love.</p>
-            <div className="upload-box" onClick={() => fileInputRef.current?.click()}>
+            <div
+              className={`upload-area ${fileName ? 'has-file' : ''}`}
+              onClick={() => fileInputRef.current?.click()}
+            >
               {fileName ? (
                 <p className="upload-filename">{fileName}</p>
               ) : (
                 <>
-                  <svg className="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="17 8 12 3 7 8" />
-                    <line x1="12" y1="3" x2="12" y2="15" />
-                  </svg>
-                  <p>Click to upload or drag & drop your outfit photo here</p>
+                  <div className="upload-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <p className="upload-text">Click to upload or drag & drop your outfit photo here</p>
                   <button type="button" className="upload-btn">Select Image</button>
                 </>
               )}
@@ -112,12 +117,14 @@ const BespokeCouture = () => {
             </div>
           </div>
 
+          <div className="form-divider"></div>
+
           {/* Step 2: Measurements */}
           <div className="form-step">
-            <h3>
+            <div className="form-step-header">
               <span className="form-step-number">2</span>
-              Your Measurements
-            </h3>
+              <span className="form-step-title">Your Measurements</span>
+            </div>
             <p className="form-step-subtitle">Your privacy is important to us. These details are kept secure.</p>
             <div className="measurement-grid">
               <div className="form-group">
@@ -139,12 +146,14 @@ const BespokeCouture = () => {
             </div>
           </div>
 
+          <div className="form-divider"></div>
+
           {/* Step 3: Customization */}
           <div className="form-step">
-            <h3>
+            <div className="form-step-header">
               <span className="form-step-number">3</span>
-              Customization Details
-            </h3>
+              <span className="form-step-title">Customization Details</span>
+            </div>
             <p className="form-step-subtitle">Tell us how you'd like your piece to look and feel.</p>
             <div className="measurement-grid" style={{ marginBottom: 'var(--zq-space-5)' }}>
               <div className="form-group">
