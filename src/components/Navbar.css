@@ -91,6 +91,7 @@
 .nav-logo {
   display: flex;
   align-items: center;
+  gap: var(--zq-space-3);
   text-decoration: none;
   flex-shrink: 0;
 }
@@ -104,6 +105,19 @@
 
 .zq-nav.scrolled .nav-logo-img {
   height: 38px;
+}
+
+.nav-brand-name {
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-xl);
+  font-weight: var(--zq-weight-regular);
+  letter-spacing: var(--zq-tracking-wider);
+  color: var(--zq-gray-800);
+  transition: font-size var(--zq-duration-normal) var(--zq-ease-out);
+}
+
+.zq-nav.scrolled .nav-brand-name {
+  font-size: var(--zq-text-lg);
 }
 
 /* ─── Nav Links ─── */
@@ -376,6 +390,14 @@
   height: 36px;
   width: auto;
   object-fit: contain;
+}
+
+.mobile-brand-name {
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-lg);
+  font-weight: var(--zq-weight-regular);
+  letter-spacing: var(--zq-tracking-wider);
+  color: var(--zq-gray-800);
 }
 
 .mobile-close {

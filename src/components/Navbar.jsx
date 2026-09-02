@@ -79,6 +79,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="nav-logo" data-cursor="link">
             <img src="/logo.svg" alt="ZaQueen" className="nav-logo-img" />
+            <span className="nav-brand-name">ZAQUEEN</span>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -191,6 +192,7 @@ const Navbar = () => {
         <div className="mobile-menu-header">
           <Link to="/" className="mobile-logo" onClick={() => setMobileOpen(false)}>
             <img src="/logo.svg" alt="ZaQueen" className="mobile-logo-img" />
+            <span className="mobile-brand-name">ZAQUEEN</span>
           </Link>
           <button className="mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
             <X size={24} />
