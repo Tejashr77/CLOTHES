@@ -1,7 +1,12 @@
+/* ═══════════════════════════════════════════════════════
+   About Page — Coastal Blue
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
 .about-hero {
   position: relative;
   height: 50vh;
-  min-height: 400px;
+  min-height: 360px;
   background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=2000');
   background-size: cover;
   background-position: center;
@@ -12,62 +17,160 @@
 
 .about-hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(43, 43, 43, 0.5);
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(43, 58, 66, 0.75) 0%,
+    rgba(30, 61, 79, 0.65) 100%
+  );
 }
 
 .about-hero-content {
   position: relative;
   z-index: 1;
-  color: var(--color-ivory);
+  text-align: center;
 }
 
 .about-hero-content h1 {
-  color: var(--color-gold);
-  font-size: 3rem;
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-5xl);
+  font-weight: var(--zq-weight-bold);
+  color: var(--zq-white);
+  letter-spacing: var(--zq-tracking-tight);
+  margin-bottom: var(--zq-space-3);
 }
 
 .about-hero-subtitle {
-  font-size: 1.2rem;
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-lg);
   font-style: italic;
-  color: var(--color-gray);
-  margin-top: var(--spacing-sm);
+  color: var(--zq-primary-lighter);
+  letter-spacing: var(--zq-tracking-wide);
+}
+
+/* ─── Sections ─── */
+.about-section {
+  padding: var(--zq-space-section) 0;
+}
+
+.about-section-alt {
+  background: var(--zq-surface);
 }
 
 .about-content {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
-.about-text {
-  margin-bottom: var(--spacing-xl);
+/* ─── Origin Blocks ─── */
+.about-origin {
+  margin-bottom: 0;
 }
 
-.about-text h2 {
-  color: var(--color-gold);
-  font-size: 1.8rem;
-  margin-bottom: var(--spacing-md);
+.about-label {
+  display: inline-block;
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-xs);
+  font-weight: var(--zq-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-tracking-widest);
+  color: var(--zq-primary);
+  background: var(--zq-primary-muted);
+  padding: var(--zq-space-1_5) var(--zq-space-4);
+  border-radius: var(--zq-radius-full);
+  margin-bottom: var(--zq-space-5);
 }
 
-.about-text p {
-  font-size: 1.05rem;
-  line-height: 1.9;
-  color: var(--color-gray-dark);
-  margin-bottom: var(--spacing-md);
+.about-origin h2 {
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-3xl);
+  font-weight: var(--zq-weight-bold);
+  color: var(--zq-gray-800);
+  letter-spacing: var(--zq-tracking-tight);
+  margin-bottom: var(--zq-space-6);
 }
 
+.about-origin p {
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-md);
+  line-height: var(--zq-leading-relaxed);
+  color: var(--zq-gray-600);
+  margin-bottom: var(--zq-space-5);
+}
+
+.about-origin p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Welcome Section ─── */
+.about-welcome {
+  padding: var(--zq-space-section) 0;
+  background: var(--zq-gray-800);
+}
+
+.about-welcome h2 {
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-4xl);
+  font-weight: var(--zq-weight-bold);
+  color: var(--zq-white);
+  letter-spacing: var(--zq-tracking-tight);
+  margin-bottom: var(--zq-space-3);
+}
+
+.about-welcome-sub {
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-lg);
+  font-style: italic;
+  color: var(--zq-primary-lighter);
+}
+
+/* ─── CTA ─── */
 .about-cta {
-  background-color: var(--color-black);
-  color: var(--color-ivory);
+  padding: var(--zq-space-section) 0;
+  background: var(--zq-white);
 }
 
 .about-cta h2 {
-  color: var(--color-gold);
+  font-family: var(--zq-font-display);
+  font-size: var(--zq-text-3xl);
+  font-weight: var(--zq-weight-bold);
+  color: var(--zq-gray-800);
+  margin-bottom: var(--zq-space-3);
 }
 
 .about-cta p {
-  color: var(--color-gray);
+  font-family: var(--zq-font-body);
+  font-size: var(--zq-text-md);
+  color: var(--zq-gray-500);
+  margin-bottom: var(--zq-space-8);
+}
+
+.about-cta-buttons {
+  display: flex;
+  gap: var(--zq-space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .about-hero-content h1 {
+    font-size: var(--zq-text-3xl);
+  }
+
+  .about-hero-subtitle {
+    font-size: var(--zq-text-base);
+  }
+
+  .about-origin h2 {
+    font-size: var(--zq-text-2xl);
+  }
+
+  .about-welcome h2 {
+    font-size: var(--zq-text-2xl);
+  }
+
+  .about-cta h2 {
+    font-size: var(--zq-text-2xl);
+  }
 }

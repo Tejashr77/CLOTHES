@@ -6,30 +6,82 @@ import './About.css';
 const About = () => {
   return (
     <div className="about-page">
+      {/* Hero */}
       <section className="about-hero">
         <div className="about-hero-overlay"></div>
-        <div className="about-hero-content container text-center">
+        <div className="about-hero-content container">
           <h1>Our Story</h1>
           <p className="about-hero-subtitle">Where vision meets couture</p>
         </div>
       </section>
 
-      <section className="section container">
+      {/* Origin Story */}
+      <section className="about-section container">
         <div className="about-content">
-          <div className="about-text">
-            <h2>The ZaQueen Philosophy</h2>
+          <div className="about-origin">
+            <span className="about-label">The Beginning</span>
+            <h2>Born at Midnight</h2>
             <p>
-              ZaQueen was born from a singular belief: every woman deserves to feel like royalty.
-              We don't just design clothes — we craft confidence, one stitch at a time.
+              ZaQueen was born in the quiet hours of midnight — at the exact moment a personal
+              dream of entering the medical field shifted into a grander destiny. Our House was
+              founded on a powerful realization: that when our initial plans don't work out, it is
+              because a higher blueprint is waiting for us.
             </p>
             <p>
-              Founded with a passion for blending contemporary aesthetics with timeless elegance,
-              our atelier brings together skilled artisans, premium fabrics, and an unwavering
-              attention to detail that transforms fabric into wearable art.
+              Instead of healing through medicine, the Founder chose to empower through design.
             </p>
           </div>
-          <div className="about-text">
-            <h2>Our Craft</h2>
+        </div>
+      </section>
+
+      {/* The Turning Point */}
+      <section className="about-section about-section-alt">
+        <div className="about-content">
+          <div className="about-origin">
+            <span className="about-label">The Turning Point</span>
+            <h2>From Frustration to Fashion</h2>
+            <p>
+              Driven by a midnight frustration — watching millions discover stunning outfits online,
+              only to find them completely unreachable in the real market — the Founder took to the
+              streets to find answers.
+            </p>
+            <p>
+              It was at this crucial turning point that destiny brought an invaluable guide into the
+              picture. Through profound, step-by-step mentorship and unwavering strategic guidance,
+              those raw late-night ideas were shaped into a true business strategy.
+            </p>
+            <p>
+              Together, through real-world consumer research, a gap in the market was validated — and
+              a fashion house was born.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy */}
+      <section className="about-section container">
+        <div className="about-content">
+          <div className="about-origin">
+            <span className="about-label">Our Philosophy</span>
+            <h2>Trust Your Journey</h2>
+            <p>
+              ZaQueen stands as living proof that life's unexpected detours — and the mentors sent
+              to guide us through them — are exactly where you are meant to shine.
+            </p>
+            <p>
+              This isn't just apparel. It is a reminder to trust your journey, embrace your
+              redirection, and wear your confidence like a crown.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Craft */}
+      <section className="about-section about-section-alt">
+        <div className="about-content">
+          <div className="about-origin">
+            <span className="about-label">Our Craft</span>
+            <h2>Designed to Reign</h2>
             <p>
               Every ZaQueen piece tells a story. From our accessible luxury line to our statement
               couture creations, we prioritize quality over quantity. Our garments are designed
@@ -41,22 +93,23 @@ const About = () => {
               brings your dream garment to life.
             </p>
           </div>
-          <div className="about-text">
-            <h2>Our Promise</h2>
-            <p>
-              We are committed to sustainable practices, fair labor, and creating pieces that
-              stand the test of time. When you wear ZaQueen, you're not just wearing a brand —
-              you're wearing a promise of quality, beauty, and empowerment.
-            </p>
-          </div>
         </div>
       </section>
 
+      {/* Welcome */}
+      <section className="about-welcome">
+        <div className="about-content text-center">
+          <h2>Welcome to ZaQueen.</h2>
+          <p className="about-welcome-sub">The search is officially over.</p>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="about-cta text-center section">
         <div className="container">
           <h2>Ready to Reign?</h2>
-          <p style={{ marginBottom: 'var(--spacing-lg)' }}>Explore our collection and find the piece that speaks to you.</p>
-          <div className="flex justify-center gap-md" style={{ flexWrap: 'wrap' }}>
+          <p>Explore our collection and find the piece that speaks to you.</p>
+          <div className="about-cta-buttons">
             <Link to="/shop"><Button variant="primary">Shop RTW</Button></Link>
             <Link to="/bespoke"><Button variant="outline">Bespoke Couture</Button></Link>
           </div>
