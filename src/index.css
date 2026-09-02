@@ -6,10 +6,10 @@
 
 :root {
   /* Legacy color redirects */
-  --color-ivory: var(--zq-ivory);
-  --color-gold: var(--zq-gold);
-  --color-accent: var(--zq-error);
-  --color-black: var(--zq-black);
+  --color-ivory: var(--zq-sand);
+  --color-gold: var(--zq-accent);
+  --color-accent: var(--zq-accent);
+  --color-black: var(--zq-gray-800);
   --color-white: var(--zq-white);
   --color-gray: var(--zq-gray-200);
   --color-gray-light: var(--zq-gray-50);
@@ -36,15 +36,15 @@
 
 body {
   font-family: var(--zq-font-body);
-  background-color: var(--zq-ivory);
-  color: var(--zq-black);
+  background-color: var(--zq-sand);
+  color: var(--zq-gray-800);
   line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--zq-font-display);
   font-weight: 500;
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
   line-height: 1.2;
   margin-bottom: var(--zq-space-2);
 }
@@ -56,7 +56,7 @@ a {
 }
 
 a:hover {
-  color: var(--zq-gold);
+  color: var(--zq-primary);
 }
 
 ul { list-style: none; }
@@ -88,37 +88,37 @@ button {
 .btn:active { transform: scale(0.97); }
 
 .btn-primary {
-  background-color: var(--zq-gold);
+  background-color: var(--zq-primary);
   color: var(--zq-white);
-  border-color: var(--zq-gold);
+  border-color: var(--zq-primary);
 }
 
 .btn-primary:hover {
-  background-color: var(--zq-gold-dark);
-  box-shadow: var(--zq-shadow-gold);
+  background-color: var(--zq-primary-dark);
+  box-shadow: var(--zq-shadow-primary);
   transform: translateY(-1px);
 }
 
 .btn-outline {
   background-color: transparent;
-  border-color: var(--zq-gray-300);
-  color: var(--zq-black);
+  border-color: var(--zq-gray-200);
+  color: var(--zq-gray-800);
 }
 
 .btn-outline:hover {
-  border-color: var(--zq-gold);
-  color: var(--zq-gold);
-  background: var(--zq-glass-bg-gold);
+  border-color: var(--zq-primary);
+  color: var(--zq-primary);
+  background: var(--zq-glass-bg-primary);
 }
 
-.btn-gold-outline {
+.btn-accent-outline {
   background-color: transparent;
-  border-color: var(--zq-gold);
-  color: var(--zq-gold);
+  border-color: var(--zq-accent);
+  color: var(--zq-accent);
 }
 
-.btn-gold-outline:hover {
-  background-color: var(--zq-gold);
+.btn-accent-outline:hover {
+  background-color: var(--zq-accent);
   color: var(--zq-white);
 }
 
@@ -130,7 +130,8 @@ button {
 }
 
 .text-center { text-align: center; }
-.text-gold { color: var(--zq-gold); }
+.text-primary { color: var(--zq-primary); }
+.text-accent { color: var(--zq-accent); }
 .section { padding: var(--zq-space-section) 0; }
 .flex { display: flex; }
 .flex-col { flex-direction: column; }

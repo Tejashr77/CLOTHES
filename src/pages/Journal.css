@@ -50,9 +50,9 @@
 
 .journal-category {
   padding: var(--zq-space-1) var(--zq-space-3);
-  background: rgba(26, 26, 26, 0.7);
+  background: rgba(26, 40, 48, 0.7);
   backdrop-filter: blur(8px);
-  color: var(--zq-ivory);
+  color: var(--zq-sand);
   font-size: var(--zq-text-xs);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-wider);
@@ -78,7 +78,7 @@
 .journal-read-more {
   font-size: var(--zq-text-sm);
   font-weight: 500;
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-wide);
 }

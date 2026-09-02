@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Home Page — Luxe Edition
+   Home Page — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 
 /* ─── Reveal Animations ─── */
@@ -21,7 +21,7 @@
   font-weight: var(--zq-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-widest);
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   margin-bottom: var(--zq-space-3);
 }
 
@@ -39,7 +39,7 @@
 }
 
 .section-icon {
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   margin: 0 auto var(--zq-space-4);
   display: block;
 }
@@ -53,7 +53,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--zq-black);
+  background: var(--zq-gray-800);
 }
 
 .hero-video-container {
@@ -72,9 +72,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(13, 13, 13, 0.2) 0%,
-    rgba(13, 13, 13, 0.45) 50%,
-    rgba(13, 13, 13, 0.75) 100%
+    rgba(26, 40, 48, 0.15) 0%,
+    rgba(26, 40, 48, 0.40) 50%,
+    rgba(26, 40, 48, 0.70) 100%
   );
 }
 
@@ -82,7 +82,7 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  color: var(--zq-ivory);
+  color: var(--zq-sand);
 }
 
 .hero-eyebrow {
@@ -90,7 +90,7 @@
   font-weight: var(--zq-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-widest);
-  color: var(--zq-gray-400);
+  color: var(--zq-gray-300);
   margin-bottom: var(--zq-space-6);
 }
 
@@ -98,19 +98,19 @@
   font-family: var(--zq-font-display);
   font-size: var(--zq-text-hero);
   font-weight: var(--zq-weight-medium);
-  color: var(--zq-ivory);
+  color: var(--zq-sand);
   line-height: var(--zq-leading-none);
   margin-bottom: var(--zq-space-6);
 }
 
 .hero-title em {
-  color: var(--zq-gold);
+  color: var(--zq-accent);
   font-style: italic;
 }
 
 .hero-subtitle {
   font-size: var(--zq-text-hero-sub);
-  color: var(--zq-gray-400);
+  color: var(--zq-gray-300);
   max-width: 520px;
   margin: 0 auto var(--zq-space-8);
   line-height: var(--zq-leading-relaxed);
@@ -138,7 +138,7 @@
 .scroll-line {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, var(--zq-gold), transparent);
+  background: linear-gradient(to bottom, var(--zq-accent), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
@@ -146,7 +146,7 @@
   font-size: var(--zq-text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-widest);
-  color: var(--zq-gray-500);
+  color: var(--zq-gray-400);
 }
 
 @keyframes scrollPulse {
@@ -156,7 +156,7 @@
 
 /* ─── Categories ─── */
 .categories-section {
-  background: var(--zq-ivory);
+  background: var(--zq-sand);
 }
 
 .categories-grid {
@@ -195,12 +195,12 @@
 .category-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(13, 13, 13, 0.7) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(26, 40, 48, 0.7) 100%);
   transition: opacity var(--zq-duration-normal) var(--zq-ease-out);
 }
 
 .category-card:hover .category-overlay {
-  background: linear-gradient(180deg, transparent 30%, rgba(13, 13, 13, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 30%, rgba(26, 40, 48, 0.8) 100%);
 }
 
 .category-content {
@@ -227,7 +227,7 @@
   font-weight: var(--zq-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-wider);
-  color: var(--zq-gold);
+  color: var(--zq-accent);
   transition: gap var(--zq-duration-normal) var(--zq-ease-out);
 }
 
@@ -272,14 +272,14 @@
   justify-content: center;
   border: 1px solid var(--zq-gray-200);
   background: var(--zq-white);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
 }
 
 .carousel-arrow:hover:not(:disabled) {
-  border-color: var(--zq-gold);
-  color: var(--zq-gold);
-  background: var(--zq-gold-muted);
+  border-color: var(--zq-primary);
+  color: var(--zq-primary);
+  background: var(--zq-primary-muted);
 }
 
 .carousel-arrow:disabled {
@@ -302,7 +302,7 @@
 
 .carousel-dot.active {
   width: 24px;
-  background: var(--zq-gold);
+  background: var(--zq-primary);
 }
 
 /* ─── Lookbook Grid ─── */
@@ -338,7 +338,7 @@
 .lookbook-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(13, 13, 13, 0.3);
+  background: rgba(26, 40, 48, 0.3);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -407,7 +407,7 @@
 }
 
 .bespoke-title em {
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   font-style: italic;
 }
 
@@ -434,7 +434,7 @@
 .bespoke-step-num {
   font-family: var(--zq-font-display);
   font-size: var(--zq-text-sm);
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   font-weight: var(--zq-weight-semibold);
   flex-shrink: 0;
 }
@@ -445,7 +445,7 @@
 
 /* ─── Testimonials ─── */
 .testimonials-section {
-  background: var(--zq-ivory);
+  background: var(--zq-sand);
 }
 
 .testimonials-grid {
@@ -464,6 +464,7 @@
   justify-content: center;
   gap: 2px;
   margin-bottom: var(--zq-space-4);
+  color: var(--zq-accent);
 }
 
 .testimonial-text {
@@ -478,7 +479,7 @@
 .testimonial-name {
   font-size: var(--zq-text-sm);
   font-weight: var(--zq-weight-semibold);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
 }
 
 /* ─── Press Strip ─── */
@@ -516,7 +517,7 @@
 }
 
 .press-logo:hover {
-  color: var(--zq-gold);
+  color: var(--zq-primary);
 }
 
 /* ─── Instagram Grid ─── */
@@ -548,7 +549,7 @@
 .instagram-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(201, 168, 76, 0.6);
+  background: rgba(59, 110, 143, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -564,7 +565,7 @@
 
 /* ─── Newsletter ─── */
 .newsletter-section {
-  background: var(--zq-ivory);
+  background: var(--zq-sand);
 }
 
 .newsletter-card {
@@ -602,8 +603,8 @@
 .subscribe-success {
   padding: var(--zq-space-4);
   border-radius: var(--zq-radius-md);
-  background: var(--zq-gold-muted);
-  color: var(--zq-gold-dark);
+  background: var(--zq-primary-muted);
+  color: var(--zq-primary-dark);
   font-weight: var(--zq-weight-semibold);
 }
 

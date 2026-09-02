@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Checkout Page — Luxe Edition
+   Checkout Page — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 
 .checkout-page { padding: 0 0 var(--zq-space-section); }
@@ -41,8 +41,8 @@
 }
 
 .step.active .step-num {
-  background: var(--zq-gold);
-  border-color: var(--zq-gold);
+  background: var(--zq-primary);
+  border-color: var(--zq-primary);
   color: var(--zq-white);
 }
 
@@ -53,7 +53,7 @@
   transition: color var(--zq-duration-fast);
 }
 
-.step.active .step-label { color: var(--zq-black); }
+.step.active .step-label { color: var(--zq-gray-800); }
 
 .step-line {
   flex: 1;
@@ -102,13 +102,13 @@
 
 .edit-link {
   font-size: var(--zq-text-sm);
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color var(--zq-duration-fast);
 }
 
-.edit-link:hover { color: var(--zq-gold-dark); }
+.edit-link:hover { color: var(--zq-primary-dark); }
 
 /* ─── Review Items ─── */
 .review-item {
@@ -199,7 +199,7 @@
   color: var(--zq-gray-500);
 }
 
-.trust-item svg { color: var(--zq-gold); flex-shrink: 0; }
+.trust-item svg { color: var(--zq-primary); flex-shrink: 0; }
 
 /* ─── Success State ─── */
 .checkout-success {
@@ -219,8 +219,8 @@
   width: 80px;
   height: 80px;
   border-radius: var(--zq-radius-full);
-  background: var(--zq-gold-muted);
-  color: var(--zq-gold);
+  background: var(--zq-primary-muted);
+  color: var(--zq-primary);
   display: flex;
   align-items: center;
   justify-content: center;

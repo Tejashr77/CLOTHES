@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Shop / PLP — Luxe Edition
+   Shop / PLP — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 
 /* ─── Reveal ─── */
@@ -66,7 +66,7 @@
 }
 
 .view-btn.active {
-  background: var(--zq-black);
+  background: var(--zq-gray-800);
   color: var(--zq-white);
 }
 
@@ -122,7 +122,7 @@
 }
 
 .sidebar-close:hover {
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
   background: var(--zq-gray-100);
 }
 
@@ -150,8 +150,8 @@
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
 }
 
-.filter-chip:hover { color: var(--zq-black); background: var(--zq-gray-50); }
-.filter-chip.active { color: var(--zq-gold-dark); font-weight: var(--zq-weight-medium); background: var(--zq-gold-muted); }
+.filter-chip:hover { color: var(--zq-gray-800); background: var(--zq-gray-50); }
+.filter-chip.active { color: var(--zq-primary-dark); font-weight: var(--zq-weight-medium); background: var(--zq-primary-muted); }
 
 .price-range {
   display: flex;
@@ -174,10 +174,10 @@
   -webkit-appearance: none;
   width: 18px;
   height: 18px;
-  background: var(--zq-gold);
+  background: var(--zq-primary);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(201, 168, 76, 0.3);
+  box-shadow: 0 2px 6px rgba(59, 110, 143, 0.3);
 }
 
 .color-chips { display: flex; flex-wrap: wrap; gap: var(--zq-space-2); }
@@ -193,7 +193,7 @@
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
 }
 
-.color-chip.active { border-color: var(--zq-gold); background: var(--zq-gold-muted); }
+.color-chip.active { border-color: var(--zq-primary); background: var(--zq-primary-muted); }
 .color-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--zq-gray-200); }
 
 .clear-filters { width: 100%; margin-top: var(--zq-space-4); }
@@ -239,8 +239,8 @@
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
 }
 
-.size-btn:hover { border-color: var(--zq-gold); }
-.size-btn.active { background: var(--zq-gold); color: var(--zq-white); border-color: var(--zq-gold); }
+.size-btn:hover { border-color: var(--zq-primary); }
+.size-btn.active { background: var(--zq-primary); color: var(--zq-white); border-color: var(--zq-primary); }
 
 /* ─── Skeleton ─── */
 .loading-grid {

@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════
-   Footer — Luxe Edition
+   Footer — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 
 .zq-footer {
-  background: var(--zq-black);
+  background: var(--zq-gray-800);
   color: var(--zq-gray-400);
   padding: var(--zq-space-20) 0 0;
 }
@@ -32,7 +32,7 @@
   font-family: var(--zq-font-display);
   font-style: italic;
   font-size: var(--zq-text-sm);
-  color: var(--zq-gray-500);
+  color: var(--zq-gray-400);
   margin-bottom: var(--zq-space-6);
   line-height: var(--zq-leading-relaxed);
 }
@@ -48,16 +48,16 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--zq-gray-700);
+  border: 1px solid var(--zq-gray-600);
   border-radius: var(--zq-radius-full);
-  color: var(--zq-gray-500);
+  color: var(--zq-gray-400);
   transition: all var(--zq-duration-fast) var(--zq-ease-out);
 }
 
 .footer-social-link:hover {
-  color: var(--zq-gold);
-  border-color: var(--zq-gold);
-  background: rgba(201, 168, 76, 0.08);
+  color: var(--zq-accent);
+  border-color: var(--zq-accent);
+  background: rgba(232, 162, 76, 0.08);
 }
 
 .footer-col-title {
@@ -66,24 +66,24 @@
   font-weight: var(--zq-weight-semibold) !important;
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-widest);
-  color: var(--zq-ivory) !important;
+  color: var(--zq-sand) !important;
   margin-bottom: var(--zq-space-5) !important;
 }
 
 .footer-col a {
   display: block;
   font-size: var(--zq-text-sm);
-  color: var(--zq-gray-500);
+  color: var(--zq-gray-400);
   padding: var(--zq-space-1_5) 0;
   transition: color var(--zq-duration-fast) var(--zq-ease-out);
 }
 
 .footer-col a:hover {
-  color: var(--zq-gold);
+  color: var(--zq-accent);
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--zq-gray-800);
+  border-top: 1px solid var(--zq-gray-700);
   padding: var(--zq-space-6) 0;
   display: flex;
   align-items: center;
@@ -92,7 +92,7 @@
 
 .footer-copyright {
   font-size: var(--zq-text-xs);
-  color: var(--zq-gray-600);
+  color: var(--zq-gray-500);
 }
 
 .footer-bottom-links {
@@ -103,16 +103,16 @@
 
 .footer-bottom-links a {
   font-size: var(--zq-text-xs);
-  color: var(--zq-gray-600);
+  color: var(--zq-gray-500);
   transition: color var(--zq-duration-fast);
 }
 
 .footer-bottom-links a:hover {
-  color: var(--zq-gold);
+  color: var(--zq-accent);
 }
 
 .footer-dot {
-  color: var(--zq-gray-700);
+  color: var(--zq-gray-600);
   font-size: var(--zq-text-xs);
 }
 

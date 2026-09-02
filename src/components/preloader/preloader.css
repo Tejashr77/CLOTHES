@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: var(--zq-black);
+  background: var(--zq-gray-800);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
   object-fit: contain;
   margin-bottom: var(--zq-space-6);
   animation: preloaderLogoIn 1s var(--zq-ease-spring) 0.2s both;
-  filter: drop-shadow(0 4px 20px rgba(201, 168, 76, 0.3));
+  filter: drop-shadow(0 4px 20px rgba(59, 110, 143, 0.3));
 }
 
 .preloader-tagline {
@@ -45,7 +45,7 @@
 .preloader-line {
   width: 0;
   height: 1px;
-  background: var(--zq-gold);
+  background: var(--zq-primary);
   margin: 0 auto;
   animation: preloaderLine 1.5s var(--zq-ease-out) 1.2s forwards;
 }
@@ -55,7 +55,7 @@
   top: 0;
   width: 50%;
   height: 100%;
-  background: var(--zq-black);
+  background: var(--zq-gray-800);
   z-index: 1;
 }
 

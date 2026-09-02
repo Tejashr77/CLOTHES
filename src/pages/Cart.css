@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   Cart Page — Luxe Edition
+   Cart Page — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 
 .cart-page { padding: 0 0 var(--zq-space-section); }
@@ -22,14 +22,14 @@
   align-items: center;
   gap: var(--zq-space-3);
   padding: var(--zq-space-4);
-  background: var(--zq-gold-muted);
+  background: var(--zq-primary-muted);
   border-radius: var(--zq-radius-lg);
   margin-bottom: var(--zq-space-6);
   font-size: var(--zq-text-sm);
   flex-wrap: wrap;
 }
 
-.free-ship-progress svg { color: var(--zq-gold); flex-shrink: 0; }
+.free-ship-progress svg { color: var(--zq-primary); flex-shrink: 0; }
 
 .progress-bar {
   width: 100%;
@@ -41,7 +41,7 @@
 
 .progress-fill {
   height: 100%;
-  background: var(--zq-gold);
+  background: var(--zq-primary);
   border-radius: var(--zq-radius-full);
   transition: width var(--zq-duration-slow) var(--zq-ease-out);
 }
@@ -85,7 +85,7 @@
   transition: color var(--zq-duration-fast);
 }
 
-.cart-item-name:hover { color: var(--zq-gold); }
+.cart-item-name:hover { color: var(--zq-primary); }
 
 .cart-item-meta {
   font-size: var(--zq-text-sm);
@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   gap: var(--zq-space-2);
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   font-size: var(--zq-text-sm);
   font-weight: var(--zq-weight-medium);
   transition: opacity var(--zq-duration-fast);
@@ -161,7 +161,7 @@
   transition: color var(--zq-duration-fast);
 }
 
-.continue-shopping:hover { color: var(--zq-gold); }
+.continue-shopping:hover { color: var(--zq-primary); }
 
 /* ─── Summary ─── */
 .cart-summary {
@@ -203,7 +203,7 @@
   font-size: var(--zq-text-lg);
 }
 
-.free-ship-note { font-size: var(--zq-text-xs); color: var(--zq-gold); margin-top: var(--zq-space-1); }
+.free-ship-note { font-size: var(--zq-text-xs); color: var(--zq-primary); margin-top: var(--zq-space-1); }
 .text-success { color: var(--zq-success); }
 
 .checkout-btn { margin-top: var(--zq-space-6); }

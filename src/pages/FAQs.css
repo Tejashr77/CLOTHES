@@ -24,8 +24,8 @@
   transition: all var(--zq-duration-fast);
 }
 
-.faq-cat-btn.active { background: var(--zq-black); color: var(--zq-white); border-color: var(--zq-black); }
-.faq-cat-btn:hover:not(.active) { border-color: var(--zq-gold); }
+.faq-cat-btn.active { background: var(--zq-gray-800); color: var(--zq-white); border-color: var(--zq-gray-800); }
+.faq-cat-btn:hover:not(.active) { border-color: var(--zq-primary); }
 
 .faqs-list { max-width: 800px; margin: 0 auto; }
 
@@ -45,7 +45,7 @@
 }
 
 .faq-question span:first-child { flex: 1; }
-.faq-question:hover { color: var(--zq-gold); }
+.faq-question:hover { color: var(--zq-primary); }
 
 .faq-badge {
   padding: var(--zq-space-1) var(--zq-space-2);

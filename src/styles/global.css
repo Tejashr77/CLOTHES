@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   ZaQueen Global Styles — Luxe Edition
+   ZaQueen Global Styles — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap');
 @import './tokens.css';
@@ -22,8 +22,8 @@ body {
   font-family: var(--zq-font-body);
   font-weight: var(--zq-weight-regular);
   line-height: var(--zq-leading-normal);
-  color: var(--zq-black);
-  background-color: var(--zq-ivory);
+  color: var(--zq-gray-800);
+  background-color: var(--zq-sand);
   overflow-x: hidden;
 }
 
@@ -33,19 +33,19 @@ body.loading, body.modal-open {
 
 /* ─── Selection ─── */
 ::selection {
-  background-color: var(--zq-gold);
+  background-color: var(--zq-primary);
   color: var(--zq-white);
 }
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--zq-ivory); }
+::-webkit-scrollbar-track { background: var(--zq-sand); }
 ::-webkit-scrollbar-thumb { background: var(--zq-gray-300); border-radius: var(--zq-radius-full); }
-::-webkit-scrollbar-thumb:hover { background: var(--zq-gold); }
+::-webkit-scrollbar-thumb:hover { background: var(--zq-primary); }
 
 /* ─── Focus ring ─── */
 :focus-visible {
-  outline: 2px solid var(--zq-gold);
+  outline: 2px solid var(--zq-primary);
   outline-offset: 2px;
 }
 
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--zq-weight-medium);
   line-height: var(--zq-leading-tight);
   letter-spacing: var(--zq-tracking-tight);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
 }
 
 h1 { font-size: var(--zq-text-5xl); }
@@ -96,7 +96,7 @@ button {
 input, textarea, select {
   font-family: var(--zq-font-body);
   font-size: var(--zq-text-base);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
 }
 
 input::placeholder, textarea::placeholder {
@@ -181,7 +181,8 @@ table {
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
-.text-gold { color: var(--zq-gold); }
+.text-primary { color: var(--zq-primary); }
+.text-accent { color: var(--zq-accent); }
 .text-muted { color: var(--zq-gray-500); }
 .text-success { color: var(--zq-success); }
 .text-error { color: var(--zq-error); }

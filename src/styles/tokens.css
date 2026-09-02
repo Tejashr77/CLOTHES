@@ -1,49 +1,52 @@
 /* ═══════════════════════════════════════════════════════
-   ZaQueen Design Token System — Luxe Edition
+   ZaQueen Design Token System — Coastal Blue Edition
    Brand: Playfair Display (serif display) + Inter (sans-serif body)
-   Palette: Gold #C9A84C · Black #1A1A1A · Ivory #FAF8F5
+   Palette: Teal #3B6E8F · Sand #FCFCFB · Amber #E8A24C
    ═══════════════════════════════════════════════════════ */
 
 :root {
   /* ─── Brand Colors ─── */
-  --zq-gold: #C9A84C;
-  --zq-gold-light: #D4B96A;
-  --zq-gold-lighter: #E8D5A0;
-  --zq-gold-dark: #A88B3A;
-  --zq-gold-deep: #8A7030;
-  --zq-gold-muted: rgba(201, 168, 76, 0.12);
-  --zq-black: #1A1A1A;
-  --zq-black-deep: #0D0D0D;
-  --zq-black-soft: #2A2826;
-  --zq-ivory: #FAF8F5;
-  --zq-ivory-warm: #F5F0E8;
-  --zq-ivory-deep: #EDE8DF;
+  --zq-primary: #3B6E8F;
+  --zq-primary-light: #5A8FAD;
+  --zq-primary-lighter: #A8C8D8;
+  --zq-primary-dark: #2F5A75;
+  --zq-primary-deep: #1E3D4F;
+  --zq-primary-muted: rgba(59, 110, 143, 0.10);
+  --zq-accent: #E8A24C;
+  --zq-accent-light: #F0BC7A;
+  --zq-accent-lighter: #F5D5A8;
+  --zq-accent-dark: #CC8A35;
+  --zq-accent-muted: rgba(232, 162, 76, 0.12);
   --zq-white: #FFFFFF;
+  --zq-sand: #FCFCFB;
+  --zq-sand-warm: #F8F7F4;
+  --zq-sand-deep: #F0EFE9;
+  --zq-surface: #F4F6F5;
 
-  /* ─── Neutral Palette (warm-toned) ─── */
-  --zq-gray-50: #F9F8F6;
-  --zq-gray-100: #F0EFED;
-  --zq-gray-200: #E0DEDA;
-  --zq-gray-300: #C8C5BF;
-  --zq-gray-400: #A8A49E;
-  --zq-gray-500: #7A7672;
-  --zq-gray-600: #5A5754;
-  --zq-gray-700: #3D3B38;
-  --zq-gray-800: #2A2826;
-  --zq-gray-900: #1A1A1A;
+  /* ─── Neutral Palette (cool blue-gray) ─── */
+  --zq-gray-50: #F7F8F8;
+  --zq-gray-100: #EEF0F0;
+  --zq-gray-200: #E4E7E6;
+  --zq-gray-300: #C8CCCB;
+  --zq-gray-400: #9AA5A8;
+  --zq-gray-500: #7A868A;
+  --zq-gray-600: #5A666A;
+  --zq-gray-700: #3D484C;
+  --zq-gray-800: #2B3A42;
+  --zq-gray-900: #1A2830;
 
   /* ─── Semantic Colors ─── */
   --zq-success: #2D8B4E;
   --zq-success-light: #E8F5EE;
-  --zq-error: #C43E3E;
+  --zq-error: #C25450;
   --zq-error-light: #FDE8E8;
   --zq-warning: #D4A843;
   --zq-warning-light: #FDF6E3;
   --zq-info: #4A7FC4;
   --zq-info-light: #E8F0FA;
-  --zq-sale: #C43E3E;
+  --zq-sale: #C25450;
   --zq-new: #2D8B4E;
-  --zq-preorder: #C9A84C;
+  --zq-preorder: #E8A24C;
 
   /* ─── Typography ─── */
   --zq-font-display: 'Playfair Display', 'Georgia', serif;
@@ -136,26 +139,28 @@
   --zq-glass-blur: 20px;
   --zq-glass-blur-heavy: 40px;
   --zq-glass-blur-light: 12px;
-  --zq-glass-bg: rgba(250, 248, 245, 0.72);
-  --zq-glass-bg-dark: rgba(26, 26, 26, 0.78);
-  --zq-glass-bg-gold: rgba(201, 168, 76, 0.12);
-  --zq-glass-border: rgba(255, 255, 255, 0.18);
+  --zq-glass-bg: rgba(252, 252, 251, 0.72);
+  --zq-glass-bg-dark: rgba(26, 40, 48, 0.78);
+  --zq-glass-bg-primary: rgba(59, 110, 143, 0.10);
+  --zq-glass-bg-accent: rgba(232, 162, 76, 0.12);
+  --zq-glass-border: rgba(255, 255, 255, 0.20);
   --zq-glass-border-dark: rgba(255, 255, 255, 0.08);
-  --zq-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  --zq-glass-shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.1);
-  --zq-glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --zq-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  --zq-glass-shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.08);
+  --zq-glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
   /* ─── Shadows ─── */
-  --zq-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --zq-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --zq-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --zq-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-  --zq-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
-  --zq-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
-  --zq-shadow-gold: 0 4px 24px rgba(201, 168, 76, 0.25);
-  --zq-shadow-gold-lg: 0 8px 40px rgba(201, 168, 76, 0.35);
-  --zq-shadow-float: 0 20px 60px rgba(0, 0, 0, 0.15);
-  --zq-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  --zq-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --zq-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --zq-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --zq-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --zq-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --zq-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --zq-shadow-primary: 0 4px 24px rgba(59, 110, 143, 0.20);
+  --zq-shadow-primary-lg: 0 8px 40px rgba(59, 110, 143, 0.30);
+  --zq-shadow-accent: 0 4px 24px rgba(232, 162, 76, 0.20);
+  --zq-shadow-float: 0 20px 60px rgba(0, 0, 0, 0.12);
+  --zq-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.03);
 
   /* ─── Transitions ─── */
   --zq-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -193,7 +198,7 @@
 
 /* ─── Dark mode override ─── */
 [data-theme="dark"] {
-  --zq-glass-bg: rgba(26, 26, 26, 0.72);
+  --zq-glass-bg: rgba(26, 40, 48, 0.72);
   --zq-glass-border: rgba(255, 255, 255, 0.08);
   --zq-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
   --zq-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2);

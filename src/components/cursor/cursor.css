@@ -17,7 +17,7 @@
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background: var(--zq-gold);
+  background: var(--zq-primary);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.3s var(--zq-ease-spring), height 0.3s var(--zq-ease-spring), background 0.3s ease;
@@ -29,7 +29,7 @@
 .custom-cursor.state-link .cursor-dot {
   width: 6px;
   height: 6px;
-  background: var(--zq-gold);
+  background: var(--zq-primary);
 }
 
 .cursor-icon {
@@ -51,7 +51,7 @@
   left: 0;
   width: 36px;
   height: 36px;
-  border: 1.5px solid var(--zq-gold);
+  border: 1.5px solid var(--zq-primary);
   border-radius: 50%;
   z-index: var(--zq-z-cursor);
   pointer-events: none;
@@ -68,27 +68,27 @@
 .cursor-ring.state-view {
   width: 60px;
   height: 60px;
-  border-color: var(--zq-gold);
+  border-color: var(--zq-primary);
 }
 
 .cursor-ring.state-add {
   width: 50px;
   height: 50px;
-  border-color: var(--zq-gold);
+  border-color: var(--zq-primary);
   border-style: dashed;
 }
 
 .cursor-ring.state-drag {
   width: 44px;
   height: 44px;
-  border-color: var(--zq-gold);
+  border-color: var(--zq-primary);
 }
 
 .cursor-ring.state-link {
   width: 44px;
   height: 44px;
-  border-color: var(--zq-gold);
-  background: rgba(201, 168, 76, 0.08);
+  border-color: var(--zq-primary);
+  background: rgba(59, 110, 143, 0.08);
 }
 
 /* Hide on touch devices */

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   ProductCard — Luxe Edition
+   ProductCard — Coastal Blue Edition
    ═══════════════════════════════════════════════════════ */
 
 .pq-card {
@@ -86,12 +86,12 @@
 }
 
 .pq-badge-scarcity {
-  background: var(--zq-black);
+  background: var(--zq-gray-800);
   color: var(--zq-white);
 }
 
 .pq-badge-preorder {
-  background: var(--zq-gold);
+  background: var(--zq-accent);
   color: var(--zq-white);
 }
 
@@ -99,7 +99,7 @@
 .pq-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(13, 13, 13, 0.25);
+  background: rgba(26, 40, 48, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,7 +126,7 @@
   font-weight: var(--zq-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-wider);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
   transform: translateY(8px);
   opacity: 0;
   transition: all var(--zq-duration-normal) var(--zq-ease-out);
@@ -140,7 +140,7 @@
 }
 
 .pq-overlay-btn:hover {
-  background: var(--zq-gold);
+  background: var(--zq-primary);
   color: var(--zq-white);
 }
 
@@ -154,7 +154,7 @@
   font-weight: var(--zq-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--zq-tracking-widest);
-  color: var(--zq-gold);
+  color: var(--zq-primary);
   margin-bottom: var(--zq-space-1_5);
 }
 
@@ -163,14 +163,14 @@
   font-family: var(--zq-font-body);
   font-size: var(--zq-text-sm);
   font-weight: var(--zq-weight-medium);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
   line-height: var(--zq-leading-snug);
   margin-bottom: var(--zq-space-1_5);
   transition: color var(--zq-duration-fast) var(--zq-ease-out);
 }
 
 .pq-card-title:hover {
-  color: var(--zq-gold);
+  color: var(--zq-primary);
 }
 
 .pq-card-price-row {
@@ -182,7 +182,7 @@
 .pq-card-price {
   font-weight: var(--zq-weight-semibold);
   font-size: var(--zq-text-sm);
-  color: var(--zq-black);
+  color: var(--zq-gray-800);
 }
 
 .pq-card-original-price {
