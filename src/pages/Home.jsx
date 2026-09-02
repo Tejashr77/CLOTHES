@@ -26,30 +26,32 @@ const Home = () => {
     {
       name: 'Statement Pieces',
       desc: 'Bold silhouettes that command the room. Designed for the woman who never whispers.',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=1200',
+      image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1200',
       link: '/shop',
     },
     {
       name: 'The Premium Edit',
       desc: 'Refined fabrics, precise tailoring. Quiet luxury that speaks volumes.',
-      image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1200',
+      image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=1200',
       link: '/shop',
     },
     {
       name: 'Everyday Couture',
       desc: 'Elevated essentials for the moments between. Because style never clocks out.',
-      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200',
+      image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&q=80&w=1200',
       link: '/shop',
     },
   ];
 
   const lookbookImages = [
-    { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=1200', style: 'lb-wide' },
-    { src: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800', style: 'lb-tall' },
-    { src: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800', style: 'lb-standard' },
-    { src: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=800', style: 'lb-standard' },
+    { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=1200', style: 'lb-wide' },
+    { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800', style: 'lb-tall' },
+    { src: 'https://images.unsplash.com/photo-1544957992-20514f595d6f?auto=format&fit=crop&q=80&w=800', style: 'lb-standard' },
+    { src: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800', style: 'lb-standard' },
     { src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=1200', style: 'lb-wide' },
-    { src: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800', style: 'lb-tall' },
+    { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=800', style: 'lb-tall' },
+    { src: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800', style: 'lb-standard' },
+    { src: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200', style: 'lb-wide' },
   ];
 
   const testimonials = [
@@ -65,7 +67,7 @@ const Home = () => {
       <section className={`hero ${heroLoaded ? 'hero--loaded' : ''}`}>
         <div className="hero__image">
           <img
-            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=2000"
+            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000"
             alt=""
           />
         </div>
@@ -152,7 +154,7 @@ const Home = () => {
         <div className="container">
           <div className="bespoke__split">
             <div className="bespoke__image">
-              <img src="https://images.unsplash.com/photo-1550614000-4b95d466f20d?auto=format&fit=crop&q=80&w=1000" alt="Bespoke process" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&q=80&w=1000" alt="Bespoke process" loading="lazy" />
             </div>
             <div className="bespoke__content">
               <h2 className="bespoke__title">
