@@ -84,6 +84,9 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="nav-links">
+            <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+              Home
+            </Link>
             <Link to="/shop" className={`nav-link ${location.pathname === '/shop' ? 'active' : ''}`}>
               Shop
             </Link>
