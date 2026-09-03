@@ -4,6 +4,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
+    "build": "echo \"No build needed\"",
     "seed": "node seed.js"
   },
   "dependencies": {
