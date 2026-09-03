@@ -56,7 +56,7 @@ const Navbar = () => {
     <>
       {/* ─── Top Announcement Bar ─── */}
       <div className={`zq-topbar ${scrolled ? 'hidden-bar' : ''}`}>
-        <p>Complimentary shipping on orders above ₹50,000</p>
+        <p>Your vision. Our couture. Crafted for women</p>
       </div>
 
       {/* ─── Main Navbar ─── */}
