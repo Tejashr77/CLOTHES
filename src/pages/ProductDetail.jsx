@@ -32,16 +32,6 @@ const ProductDetail = () => {
   const relatedProducts = products.filter(p => p._id !== product?._id && p.category === product?.category).slice(0, 4);
   const crossSellProducts = products.filter(p => p._id !== product?._id).sort(() => Math.random() - 0.5).slice(0, 4);
 
-  const activeColorData = colorSwatches.find(c => c.name === selectedColor);
-
-  const allImages = product ? (
-    activeColorData ? activeColorData.images : [
-      product.image,
-      'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800',
-    ]
-  ) : [];
-
   const reviews = [
     { id: 1, name: 'Priya M.', rating: 5, date: '2 weeks ago', verified: true, text: 'Absolutely stunning quality. The fit is perfect and the fabric feels luxurious. Worth every penny.', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100' },
     { id: 2, name: 'Ananya K.', rating: 5, date: '1 month ago', verified: true, text: 'Got so many compliments! The craftsmanship is impeccable. Will be ordering more.', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100' },
@@ -70,6 +60,16 @@ const ProductDetail = () => {
       'https://images.pexels.com/photos/37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=800',
     ]},
   ];
+
+  const activeColorData = colorSwatches.find(c => c.name === selectedColor);
+
+  const allImages = product ? (
+    activeColorData ? activeColorData.images : [
+      product.image,
+      'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800',
+    ]
+  ) : [];
 
   const handleAddToCart = () => {
     if (product.sizes?.length > 0 && !selectedSize) { alert('Please select a size'); return; }
