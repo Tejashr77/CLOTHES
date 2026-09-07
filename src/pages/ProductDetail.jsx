@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext';
 import { useCart } from '../context/CartContext';
 import { GlassButton, GlassModal } from '../components/glass';
+import SizeGuideModal from '../components/SizeGuideModal';
 import ProductCard from '../components/ProductCard';
 import { formatPrice } from '../utils/helpers';
 import { Heart, Share2, Truck, RotateCcw, Shield, Star, ChevronDown, ZoomIn, Minus, Plus } from 'lucide-react';
@@ -41,14 +42,6 @@ const ProductDetail = () => {
     { id: 1, name: 'Priya M.', rating: 5, date: '2 weeks ago', verified: true, text: 'Absolutely stunning quality. The fit is perfect and the fabric feels luxurious. Worth every penny.', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100' },
     { id: 2, name: 'Ananya K.', rating: 5, date: '1 month ago', verified: true, text: 'Got so many compliments! The craftsmanship is impeccable. Will be ordering more.', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100' },
     { id: 3, name: 'Meera R.', rating: 4, date: '1 month ago', verified: false, text: 'Beautiful dress, runs slightly large. Size down if between sizes.', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100' },
-  ];
-
-  const sizeGuideData = [
-    { size: 'XS', bust: '32', waist: '24', hips: '34' },
-    { size: 'S', bust: '34', waist: '26', hips: '36' },
-    { size: 'M', bust: '36', waist: '28', hips: '38' },
-    { size: 'L', bust: '38', waist: '30', hips: '40' },
-    { size: 'XL', bust: '40', waist: '32', hips: '42' },
   ];
 
   const colorSwatches = [
@@ -289,20 +282,7 @@ const ProductDetail = () => {
       </div>
 
       {/* Size Guide Modal */}
-      <GlassModal isOpen={showSizeGuide} onClose={() => setShowSizeGuide(false)} title="Size Guide">
-        <p className="mb-4 text-muted">All measurements are in inches. Measure yourself and compare.</p>
-        <table className="size-guide-table">
-          <thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr></thead>
-          <tbody>
-            {sizeGuideData.map(row => (
-              <tr key={row.size}><td><strong>{row.size}</strong></td><td>{row.bust}</td><td>{row.waist}</td><td>{row.hips}</td></tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="mt-4" style={{ background: 'var(--zq-gold-muted)', borderRadius: 'var(--zq-radius-md)', padding: 'var(--zq-space-4)' }}>
-          <p className="text-sm"><strong>Fit Predictor:</strong> If you're between sizes, we recommend sizing down for a fitted look or up for a relaxed fit.</p>
-        </div>
-      </GlassModal>
+      <SizeGuideModal isOpen={showSizeGuide} onClose={() => setShowSizeGuide(false)} />
 
       {/* Zoom Modal */}
       <GlassModal isOpen={showZoom} onClose={() => setShowZoom(false)}>
