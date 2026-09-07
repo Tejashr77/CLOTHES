@@ -32,11 +32,15 @@ const ProductDetail = () => {
   const relatedProducts = products.filter(p => p._id !== product?._id && p.category === product?.category).slice(0, 4);
   const crossSellProducts = products.filter(p => p._id !== product?._id).sort(() => Math.random() - 0.5).slice(0, 4);
 
-  const allImages = product ? [
-    product.image,
-    'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800',
-  ] : [];
+  const activeColorData = colorSwatches.find(c => c.name === selectedColor);
+
+  const allImages = product ? (
+    activeColorData ? activeColorData.images : [
+      product.image,
+      'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800',
+    ]
+  ) : [];
 
   const reviews = [
     { id: 1, name: 'Priya M.', rating: 5, date: '2 weeks ago', verified: true, text: 'Absolutely stunning quality. The fit is perfect and the fabric feels luxurious. Worth every penny.', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100' },
@@ -45,10 +49,26 @@ const ProductDetail = () => {
   ];
 
   const colorSwatches = [
-    { name: 'Midnight', color: '#1a1a2e' },
-    { name: 'Ruby', color: '#e74c3c' },
-    { name: 'Emerald', color: '#2ecc71' },
-    { name: 'Gold', color: '#C9A84C' },
+    { name: 'Midnight', color: '#1a1a2e', images: [
+      'https://images.pexels.com/photos/19780968/pexels-photo-19780968.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/16698354/pexels-photo-16698354.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/30326211/pexels-photo-30326211.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ]},
+    { name: 'Ruby', color: '#e74c3c', images: [
+      'https://images.pexels.com/photos/37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/34726708/pexels-photo-34726708.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/36378795/pexels-photo-36378795.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ]},
+    { name: 'Emerald', color: '#2ecc71', images: [
+      'https://images.pexels.com/photos/38962066/pexels-photo-38962066.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/38507485/pexels-photo-38507485.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/38963569/pexels-photo-38963569.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ]},
+    { name: 'Gold', color: '#C9A84C', images: [
+      'https://images.pexels.com/photos/30842648/pexels-photo-30842648.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/19780968/pexels-photo-19780968.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=800',
+    ]},
   ];
 
   const handleAddToCart = () => {
@@ -133,7 +153,7 @@ const ProductDetail = () => {
               <p className="pdp-label">Color{selectedColor ? `: ${selectedColor}` : ''}</p>
               <div className="color-swatches">
                 {colorSwatches.map(c => (
-                  <button key={c.name} className={`swatch ${selectedColor === c.name ? 'active' : ''}`} onClick={() => setSelectedColor(c.name)} style={{ background: c.color }} title={c.name} aria-label={c.name} />
+                  <button key={c.name} className={`swatch ${selectedColor === c.name ? 'active' : ''}`} onClick={() => { setSelectedColor(c.name); setActiveImage(0); }} style={{ background: c.color }} title={c.name} aria-label={c.name} />
                 ))}
               </div>
             </div>
